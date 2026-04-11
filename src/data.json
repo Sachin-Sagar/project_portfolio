@@ -1,0 +1,194 @@
+{
+    "basics": {
+        "name": "Sachin Sagar",
+        "title": "Embedded Applications Engineer (ADAS)",
+        "company": "Bajaj Auto",
+        "education": "B.Tech, IIT Madras",
+        "email": "sachinsagar289@gmail.com",
+        "linkedin": "https://www.linkedin.com/in/sachin-sagar-47155a1ab/",
+        "github": "https://github.com/Sachin-Sagar",
+        "summary": "I am a mechanical engineer by degree, an embedded applications developer by profession, and a relentless builder at heart. I thrive at the intersection of hardware and software, specializing in perception systems and bringing intelligence to the edge. I am of the opinion: the harder the challenge, the greater the joy.\n\nIn my professional work, I focus heavily on the Texas Instruments ecosystem, developing perception algorithms for mmWave radars. My work involves writing and debugging embedded C on the onboard microprocessors using Code Composer Studio, as well as meticulously tuning radar configurations to extract the highest quality and density of point clouds. Discipline and adaptability are my greatest assets, allowing me to dive headfirst into complex, cross-functional projects and figure out exactly what it takes to ship them.\n\nMy drive to build extends beyond working hours. I spend my evenings and weekends expanding skills in Edge AI and hardware integration. I like tinkering with microcontrollers, deploying machine learning models to resource-constrained devices, and building out real-time sensor pipelines from scratch, I relish the process of creating something from nothing.\n\nI like to start my mornings prioritizing my health at the gym. Off the clock, you can find me taking long motorcycle rides or lost in fantasy books at coffee shops."
+    },
+    "skills": {
+        "Programming": [
+            "C",
+            "C++",
+            "Python",
+            "MATLAB",
+            "Simulink",
+            "Stateflow",
+            "Shell Scripting",
+            "JavaScript"
+        ],
+        "Protocols": [
+            "CAN (High-speed/FD)",
+            "IPC",
+            "UART",
+            "SPI",
+            "I2C",
+            "LIN"
+        ],
+        "Embedded Hardware": [
+            "TI mmWave Radar",
+            "ARM Cortex-M",
+            "Raspberry Pi",
+            "Arduino",
+            "Renesas RH850"
+        ],
+        "Control Estimation": [
+            "IMM-EKF (CA/CT Models)",
+            "Sensor Fusion",
+            "PID",
+            "MPC",
+            "Kalman Filtering"
+        ],
+        "ADAS Perception": [
+            "Clustering",
+            "Multi-object Tracking",
+            "Real-time Object Detection",
+            "Classification"
+        ],
+        "Tools": [
+            "Code Composer Studio",
+            "TargetLink",
+            "Embedded Coder",
+            "Git",
+            "Linux",
+            "vSignalizer"
+        ]
+    },
+    "courses": [
+        "Mathematics for Machine Learning Specialization",
+        "Computer Vision Basics",
+        "Machine Learning",
+        "ARM Cortex (STM32) Fundamentals: Building Embedded Systems",
+        "Financial Markets"
+    ],
+    "experience": {
+        "professional": [
+            {
+                "role": "ADAS Algorithm Design and Testing",
+                "company": "Bajaj Auto Technology Ltd (R&D)",
+                "period": "06/2025 - Present",
+                "color": "royalblue",
+                "bulletPoints": [
+                    "Developed the company's first end-to-end ADAS perception stack on the TI AWR1843 platform, and established tools for CI/CD workflows.",
+                    "Architected real-time sensor fusion on the onboard DSP, synchronizing IMU data, and vehicle odometry from the vehicle CAN bus with radar point clouds for clustering (DBSCAN) and tracking (JPDA). Designed an Interacting Mixture Model (IMM).",
+                    "Programmed and debugged the firmware using Code Composer Studio (CCS) within a FreeRTOS environment on AWR1843/1432 SoCs.",
+                    "Engineered a comprehensive web-based visualization suite using JavaScript to synchronize and replay Radar, Camera, and CAN log data.",
+                    "Implemented active safety features such as Active Emergency Braking and Adaptive Cruise Control using track collision probability."
+                ]
+            },
+            {
+                "role": "EV Control Strategy",
+                "company": "Bajaj Auto Technology Ltd (R&D)",
+                "period": "08/2023 - 05/2025",
+                "color": "royalblue",
+                "bulletPoints": [
+                    "Deployed a sensor-less mass and grade estimation algorithm for a shared mobility project using existing CAN bus data.",
+                    "Engineered a custom Coordinate Transformation library in MATLAB to normalize raw IMU readings from the sensor frame to the vehicle frame across multiple SKUs.",
+                    "Used the processed IMU data for firmware-level IMU applications (roll-over detection, blinker auto-cancellation, pitch-based regen/hill-hold) to the vehicle's production software.",
+                    "Resolved 20+ critical firmware defects in traction control and hill-assist logic through rigorous unit testing and system-level debugging."
+                ]
+            }
+        ],
+        "college": [
+            {
+                "grouped": true,
+                "company": "Raftar Formula Racing",
+                "period": "02/2020 - 02/2023",
+                "roles": [
+                    {
+                        "role": "Accumulator and Thermals Lead",
+                        "period": "01/2022 - 02/2023",
+                        "color": "#3BFF00",
+                        "bulletPoints": [
+                            "Leading the design team of the accumulator and thermal management sub-systems.",
+                            "Senior powertrain engineer under HV, motor, and control."
+                        ]
+                    },
+                    {
+                        "role": "Thermal Management Lead",
+                        "period": "03/2021 - 01/2022",
+                        "color": "#3BFF00",
+                        "bulletPoints": [
+                            "Leading the thermal design of drivetrain and accumulator. Working on motor and control."
+                        ]
+                    },
+                    {
+                        "role": "Powertrain Engineer",
+                        "period": "02/2020 - 02/2021",
+                        "color": "#3BFF00",
+                        "bulletPoints": [
+                            "Worked on cell chemistry analysis, heat load estimation, data acquisition system, and lap-time simulation software."
+                        ]
+                    }
+                ]
+            },
+            {
+                "role": "Control of Camber Morphing Wing",
+                "company": "Final Year Project (VECH Lab, IIT Madras)",
+                "period": "10/2022 - 05/2023",
+                "bulletPoints": [
+                    "Spearheaded a research project with DRDO to develop a control system for a composite camber morphing airfoil.",
+                    "Architected a real-time control loop combining full-state feedback with a Kalman Filter.",
+                    "Set up Hardware in Loop (HIL) across MATLAB, Arduino, and actuator to validate logic."
+                ]
+            }
+        ],
+        "internships": [
+            {
+                "role": "Engine Testing (Internship)",
+                "company": "Bajaj Auto Technology Ltd (R&D)",
+                "period": "05/2022 - 07/2022",
+                "bulletPoints": [
+                    "Built the software infrastructure for organizing and analyzing historic engine oil reports using statistical methods.",
+                    "Created an interface for visualizing cylinder block surface roughness data as cumulative frequency distribution curves.",
+                    "Achievement: Awarded a pre-placement offer based on performance and workflow optimizations."
+                ]
+            },
+            {
+                "role": "Product Design Intern",
+                "company": "Reevia Motor",
+                "period": "02/2022 - 03/2022",
+                "bulletPoints": [
+                    "Contributed to the core product design team, drafting 3D models and engineering schematics.",
+                    "Assisted in rapid prototyping and mechanical tolerance analysis for new vehicle components.",
+                    "Achievement: Streamlined the component design phase, significantly reducing prototyping iteration time."
+                ]
+            },
+            {
+                "role": "Simulation Engineer",
+                "company": "Forbes Marshall",
+                "period": "08/2021 - 09/2021",
+                "bulletPoints": [
+                    "Developed and ran computational simulations for thermal and fluid dynamics.",
+                    "Validated engineering designs against real-world test data to ensure performance reliability.",
+                    "Achievement: Optimized simulation workflows, improving the accuracy of thermal load predictions."
+                ]
+            }
+        ]
+    },
+    "projects": [
+        {
+            "name": "Road-Anomaly Detection & Geospatial Mapping",
+            "context": "Edge AI Applications",
+            "period": "Personal",
+            "bulletPoints": [
+                "Developed an Edge AI road-anomaly detection system using STM32 X-CUBE-AI.",
+                "Integrated 6-axis IMU data for high-frequency vibration analysis.",
+                "Synchronized GPS coordinates to automate geospatial mapping of road hazards."
+            ]
+        }
+    ],
+    "education": [
+        {
+            "degree": "B. Tech (Hons) in Mechanical Engineering",
+            "institution": "Indian Institute of Technology Madras",
+            "cgpa": "8.92",
+            "year": "July 2019 - July 2023",
+            "minor": "Systems Engineering",
+            "notes": "Was awarded a minor in Systems Engineering for completing 4 graduate-level courses in estimation, controls, optimization, and ML"
+        }
+    ]
+}

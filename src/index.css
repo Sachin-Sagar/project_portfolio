@@ -1,0 +1,146 @@
+:root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f9f9f9;
+  --text-primary: #494949;
+  --text-secondary: #a0a0a0;
+
+  --accent-primary: #49bf9c;
+  --accent-secondary: #42ac8c;
+
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.3);
+
+  --font-heading: 'Outfit', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+[data-theme='dark'] {
+  --bg-primary: #121212;
+  --bg-secondary: #1e1e1e;
+  --text-primary: #e0e0e0;
+  --text-secondary: #888888;
+  --glass-bg: rgba(30, 30, 30, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.05);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.75em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  font-weight: 300;
+  color: var(--text-primary);
+  line-height: 1.5em;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 2px dashed rgba(160, 160, 160, 0.35);
+  /* Strata link style */
+  transition: border-bottom-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+a:hover {
+  color: var(--accent-primary);
+  border-bottom-color: transparent;
+}
+
+/* Button style match */
+.btn {
+  background-color: transparent;
+  border-radius: 0.35em;
+  border: solid 3px #efefef;
+  color: #787878 !important;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 400;
+  height: 3.15em;
+  line-height: 2.75em;
+  padding: 0 1.5em;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.btn:hover {
+  border-color: var(--accent-primary);
+  color: var(--accent-primary) !important;
+}
+
+.btn-primary {
+  /* For form submissions maybe */
+  background: var(--accent-primary);
+  color: #ffffff !important;
+  border-color: var(--accent-primary);
+}
+
+.btn-primary:hover {
+  background: var(--accent-secondary);
+  border-color: var(--accent-secondary);
+  color: #ffffff !important;
+}
+
+/* Reset main app container styling from before */
+.app-container {
+  display: block;
+  /* Overrides max-width centering */
+  max-width: none;
+  padding: 0;
+}
+
+/* Base Utility Classes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease forwards;
+}
+
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: 0.5em;
+  padding: 1.5em;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.glass-panel:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  border-color: var(--accent-primary);
+}

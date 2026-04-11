@@ -1,0 +1,262 @@
+/* Base Section Styles */
+.section {
+    padding: 0;
+    max-width: 100%;
+    margin: 0;
+}
+
+/* Banner for Raftar Formula Racing */
+.raftar-banner {
+    width: 100%;
+    padding: 0 1.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.raftar-banner img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.35em;
+    object-fit: cover;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.section-title {
+    font-size: 2em;
+    margin-bottom: 1.5em;
+    position: relative;
+    display: inline-block;
+}
+
+ul.bullet-points {
+    list-style-type: disc;
+    padding-left: 1.5em;
+    margin-top: 1rem;
+}
+
+ul.bullet-points li {
+    position: relative;
+    padding-left: 0.25rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+}
+
+ul.bullet-points li::before {
+    display: none;
+    /* Removing previously custom bullet */
+}
+
+/* Vertical Timeline CSS */
+.timeline-section {
+    margin-bottom: 4em;
+}
+
+.timeline-category-title {
+    font-size: 1.5em;
+    color: var(--accent-primary);
+    margin-bottom: 1.5em;
+    font-weight: 300;
+}
+
+.timeline-container {
+    position: relative;
+    padding-left: 2em;
+    /* Space for the vertical line */
+    display: flex;
+    flex-direction: column;
+    gap: 3em;
+}
+
+.timeline-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: #e0e0e0;
+    /* The vertical line itself */
+}
+
+.timeline-block {
+    position: relative;
+}
+
+/* The dot on the timeline */
+.timeline-marker {
+    position: absolute;
+    top: 0.5em;
+    /* align with first line of text */
+    left: -2.35em;
+    /* pull back across padding to center on line */
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--bg-primary);
+    border: 2px solid var(--accent-primary);
+    z-index: 1;
+}
+
+.timeline-marker-img {
+    position: absolute;
+    top: -0.5em; /* Adjusted roughly 8px higher */
+    left: -3.4em; /* Adjusted further left to keep center over line */
+    width: 60px;
+    height: 60px;
+    border-radius: 0.35em; /* slightly rounded square */
+    background: white;
+    object-fit: contain; /* Ensures the whole logo fits without clipping */
+    padding: 0.25em; /* Gives the logo a nice white border buffer */
+    border: 2px solid var(--accent-primary);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    z-index: 1;
+}
+
+.timeline-content {
+    padding-left: 2em; /* Increased gap to prevent 60px icons from overlapping */
+    border: none;
+    background: transparent;
+}
+
+/* Grouped Role Styles (Raftar Formula Racing) */
+.timeline-grouped-block {
+    position: relative;
+    margin-bottom: 2em;
+}
+
+.grouped-company {
+    font-size: 1.35em;
+    color: var(--text-primary);
+    font-weight: 600;
+    margin-bottom: 0.2em;
+}
+
+.grouped-period {
+    font-size: 0.9em;
+    color: var(--text-secondary);
+}
+
+.grouped-roles-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5em;
+    margin-top: 2em;
+}
+
+.sub-role-block .role {
+    font-size: 1.25em;
+}
+
+.timeline-header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: baseline;
+    gap: 1em;
+    margin-bottom: 0.25em;
+}
+
+.role {
+    font-size: 1.35em;
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.period {
+    font-size: 0.9em;
+    color: var(--text-secondary);
+    background: transparent;
+    padding: 0;
+    border-radius: 0;
+}
+
+.company {
+    font-size: 1.1em;
+    color: var(--text-secondary);
+    font-weight: 400;
+    margin-bottom: 1em;
+}
+
+/* Projects CSS */
+.projects-grid {
+    display: flex;
+    flex-direction: column;
+    /* Stack vertically like Strata */
+    gap: 4em;
+}
+
+.project-card {
+    padding: 0;
+    background: transparent;
+    border: none;
+    backdrop-filter: none;
+}
+
+.project-card:hover {
+    transform: none;
+    border-color: transparent;
+}
+
+.project-title {
+    font-size: 1.5em;
+    color: var(--text-primary);
+    font-weight: 400;
+    margin-bottom: 0.25em;
+}
+
+.project-context {
+    font-size: 1em;
+    color: var(--text-secondary);
+    margin-bottom: 1.5em;
+}
+
+/* Skills CSS */
+.skills-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2em;
+}
+
+.skill-category {
+    padding: 1.5em;
+}
+
+.skill-category:hover {
+    /* Hover effects are now handled by .glass-panel in index.css */
+}
+
+.category-title {
+    font-size: 1.25em;
+    margin-bottom: 1em;
+    color: var(--text-primary);
+    font-weight: 400;
+}
+
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.skill-tag {
+    background: transparent;
+    color: var(--text-secondary);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.9em;
+    border: 1px solid #e0e0e0;
+    transition: all 0.2s;
+}
+
+.skill-tag:hover {
+    background: var(--accent-primary);
+    color: white;
+    border-color: var(--accent-primary);
+}
+
+@media (max-width: 768px) {
+    .timeline-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+    }
+}

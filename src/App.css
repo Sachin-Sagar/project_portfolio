@@ -1,0 +1,157 @@
+/* Main Content Wrapper (Right Side) */
+#main {
+  margin-left: 35%;
+  width: calc(100% - 35%);
+  padding: 6em 4em 4em 4em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#main > * {
+  width: 100%;
+  max-width: 56em; /* Slightly wider than 54em for padding balance */
+}
+
+#main .section {
+  border-top: solid 2px var(--glass-border);
+  margin: 4em 0 0 0;
+  padding: 4em 0 0 0;
+}
+
+#main > *:first-child .section {
+  border-top: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/* Resets for the previous layout */
+.navbar {
+  display: none;
+  /* Removed the top navbar in favor of sidebar */
+}
+
+/* Hero section specific in #main */
+.hero-title {
+  font-size: 2.25em;
+  font-weight: 300;
+  margin-bottom: 0.5em;
+}
+
+.hero-summary {
+  font-size: 1.15em;
+  margin-bottom: 2em;
+  color: #494949;
+}
+
+@media screen and (max-width: 1280px) {
+  #main {
+    margin-left: 30%;
+    width: calc(100% - 30%);
+    padding: 5em 3em 3em 3em;
+  }
+}
+
+@media screen and (max-width: 980px) {
+  #main {
+    margin-left: 0;
+    max-width: none;
+    padding: 4em 3em 3em 3em;
+    width: 100%;
+  }
+}
+
+/* ==== ABOUT SECTION PROFILE PHOTO ==== */
+.about-content {
+  position: relative;
+}
+
+.about-profile-photo {
+  float: left;
+  max-width: 200px;
+  /* Size appropriate for reading around */
+  height: auto;
+  border-radius: 0.35em;
+  margin: 0 1.5em 1em 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: block;
+}
+
+/* Base utility for floats */
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@media screen and (max-width: 480px) {
+  .about-profile-photo {
+    float: none;
+    margin: 0 auto 1.5em auto;
+    /* Center on mobile */
+    max-width: 100%;
+    /* Or some fixed size for mobile */
+  }
+}
+
+/* Image/Thumbnail Styling */
+.image.fit {
+  display: block;
+  margin: 0 0 1.5em 0;
+  width: 100%;
+}
+
+.image.fit img {
+  width: 100%;
+  border-radius: 0.35em;
+  display: block;
+}
+
+.image.thumb {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  border-radius: 0.35em;
+  cursor: pointer;
+}
+
+/* Hover Overlay Effect */
+.image.thumb:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.25);
+  /* Translucent overlay */
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  border-radius: 0.35em;
+  /* Match corner */
+}
+
+.image.thumb:hover:before {
+  opacity: 1;
+}
+
+/* Hover "View" Button */
+.image.thumb:after {
+  content: 'View';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: solid 2px rgba(255, 255, 255, 0.5);
+  color: #fff;
+  padding: 0.3em 1.25em;
+  border-radius: 0.35em;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  font-weight: 400;
+  font-size: 0.8em;
+}
+
+.image.thumb:hover:after {
+  opacity: 1;
+}
