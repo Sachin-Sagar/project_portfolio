@@ -99,21 +99,27 @@ ul.bullet-points li::before {
 
 .timeline-marker-img {
     position: absolute;
-    top: -0.5em; /* Adjusted roughly 8px higher */
-    left: -3.4em; /* Adjusted further left to keep center over line */
+    top: -0.5em;
+    /* Adjusted roughly 8px higher */
+    left: -3.4em;
+    /* Adjusted further left to keep center over line */
     width: 60px;
     height: 60px;
-    border-radius: 0.35em; /* slightly rounded square */
+    border-radius: 0.35em;
+    /* slightly rounded square */
     background: white;
-    object-fit: contain; /* Ensures the whole logo fits without clipping */
-    padding: 0.25em; /* Gives the logo a nice white border buffer */
+    object-fit: contain;
+    /* Ensures the whole logo fits without clipping */
+    padding: 0.25em;
+    /* Gives the logo a nice white border buffer */
     border: 2px solid var(--accent-primary);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     z-index: 1;
 }
 
 .timeline-content {
-    padding-left: 2em; /* Increased gap to prevent 60px icons from overlapping */
+    padding-left: 2em;
+    /* Increased gap to prevent 60px icons from overlapping */
     border: none;
     background: transparent;
 }

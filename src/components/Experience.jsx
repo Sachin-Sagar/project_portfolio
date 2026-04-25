@@ -26,39 +26,39 @@ const TimelineSection = ({ title, data }) => (
                     // Render a grouped experience (like Raftar)
                     return (
                         <FadeInSection key={index}>
-                        <div className="timeline-grouped-block">
-                            {item.company === 'Raftar Formula Racing' && (
-                                <div className="raftar-banner">
-                                    <img src={rfr_car} alt="Raftar Formula Racing" />
-                                </div>
-                            )}
-                            <h4 className="company grouped-company">{item.company}</h4>
-                            <span className="grouped-period">{item.period}</span>
-
-                            <div className="grouped-roles-container">
-                                {item.roles.map((subRole, subIdx) => (
-                                    <div key={subIdx} className="timeline-block sub-role-block">
-                                        <div
-                                            className="timeline-marker"
-                                            style={{ borderColor: subRole.color || 'var(--accent-primary)' }}
-                                        ></div>
-
-                                        <div className="timeline-content">
-                                            <div className="timeline-header">
-                                                <h3 className="role">{subRole.role}</h3>
-                                                <span className="period">{subRole.period}</span>
-                                            </div>
-                                            {subRole.company && <h4 className="company">{subRole.company}</h4>}
-                                            <ul className="bullet-points">
-                                                {subRole.bulletPoints.map((point, i) => (
-                                                    <li key={i}>{point}</li>
-                                                ))}
-                                            </ul>
-                                        </div>
+                            <div className="timeline-grouped-block">
+                                {item.company === 'Raftar Formula Racing' && (
+                                    <div className="raftar-banner">
+                                        <img src={rfr_car} alt="Raftar Formula Racing" />
                                     </div>
-                                ))}
+                                )}
+                                <h4 className="company grouped-company">{item.company}</h4>
+                                <span className="grouped-period">{item.period}</span>
+
+                                <div className="grouped-roles-container">
+                                    {item.roles.map((subRole, subIdx) => (
+                                        <div key={subIdx} className="timeline-block sub-role-block">
+                                            <div
+                                                className="timeline-marker"
+                                                style={{ borderColor: subRole.color || 'var(--accent-primary)' }}
+                                            ></div>
+
+                                            <div className="timeline-content">
+                                                <div className="timeline-header">
+                                                    <h3 className="role">{subRole.role}</h3>
+                                                    <span className="period">{subRole.period}</span>
+                                                </div>
+                                                {subRole.company && <h4 className="company">{subRole.company}</h4>}
+                                                <ul className="bullet-points">
+                                                    {subRole.bulletPoints.map((point, i) => (
+                                                        <li key={i}>{point}</li>
+                                                    ))}
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
-                        </div>
                         </FadeInSection>
                     );
                 }
@@ -66,37 +66,37 @@ const TimelineSection = ({ title, data }) => (
                 // Render a normal single experience
                 return (
                     <FadeInSection key={index}>
-                    <div className="timeline-block">
-                        {icon ? (
-                            <img src={icon} alt={`${item.company} logo`} className="timeline-marker-img" />
-                        ) : (
-                            <div className="timeline-marker"></div>
-                        )}
-                        
-                        <div className="timeline-content">
-                            {item.company === 'Bajaj Auto Technology Ltd (R&D)' && item.role.includes('ADAS') && (
-                                <div className="raftar-banner" style={{marginBottom: '1rem', marginLeft: '-1.5rem', textAlign: 'left'}}>
-                                    <img src={bajaj_banner} alt="Bajaj Auto Technology Ltd banner" style={{ maxWidth: '95%' }} />
-                                </div>
+                        <div className="timeline-block">
+                            {icon ? (
+                                <img src={icon} alt={`${item.company} logo`} className="timeline-marker-img" />
+                            ) : (
+                                <div className="timeline-marker"></div>
                             )}
-                            <div className="timeline-header">
-                                <h3 className="role">{item.role}</h3>
-                                <span className="period">{item.period}</span>
+
+                            <div className="timeline-content">
+                                {item.company === 'Bajaj Auto Technology Ltd (R&D)' && item.role.includes('ADAS') && (
+                                    <div className="raftar-banner" style={{ marginBottom: '1rem', marginLeft: '-1.5rem', textAlign: 'left' }}>
+                                        <img src={bajaj_banner} alt="Bajaj Auto Technology Ltd banner" style={{ maxWidth: '95%' }} />
+                                    </div>
+                                )}
+                                <div className="timeline-header">
+                                    <h3 className="role">{item.role}</h3>
+                                    <span className="period">{item.period}</span>
+                                </div>
+                                {item.role === 'Control of Camber Morphing Wing' && (
+                                    <div className="raftar-banner" style={{ display: 'flex', gap: '1rem', marginTop: '1rem', marginBottom: '1rem', height: '240px', justifyContent: 'center', padding: 0 }}>
+                                        <img src={mpc_ctrl} alt="MPC Control Loop" style={{ maxWidth: 'calc(60% - 0.5rem)', maxHeight: '100%', width: 'auto', height: 'auto', objectFit: 'contain', borderRadius: '0.35em' }} />
+                                        <img src={morphing_wing} alt="Morphing Wing" style={{ maxWidth: 'calc(40% - 0.5rem)', maxHeight: '100%', width: 'auto', height: 'auto', objectFit: 'contain', borderRadius: '0.35em' }} />
+                                    </div>
+                                )}
+                                <h4 className="company">{item.company}</h4>
+                                <ul className="bullet-points">
+                                    {item.bulletPoints.map((point, i) => (
+                                        <li key={i}>{point}</li>
+                                    ))}
+                                </ul>
                             </div>
-                            {item.role === 'Control of Camber Morphing Wing' && (
-                                <div className="raftar-banner" style={{marginTop: '1rem', marginBottom: '1rem', marginLeft: '-1.5rem', textAlign: 'left', display: 'flex', gap: '1rem', alignItems: 'center'}}>
-                                    <img src={mpc_ctrl} alt="MPC Control Loop" style={{ width: '50%', objectFit: 'contain', borderRadius: '0.5rem' }} />
-                                    <img src={morphing_wing} alt="Morphing Wing" style={{ width: '50%', objectFit: 'contain', borderRadius: '0.5rem' }} />
-                                </div>
-                            )}
-                            <h4 className="company">{item.company}</h4>
-                            <ul className="bullet-points">
-                                {item.bulletPoints.map((point, i) => (
-                                    <li key={i}>{point}</li>
-                                ))}
-                            </ul>
                         </div>
-                    </div>
                     </FadeInSection>
                 );
             })}

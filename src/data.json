@@ -3,7 +3,7 @@
         "name": "Sachin Sagar",
         "title": "Embedded Applications Engineer (ADAS)",
         "company": "Bajaj Auto",
-        "education": "B.Tech, IIT Madras",
+        "education": "IIT Madras (B.Tech Mechanical)",
         "email": "sachinsagar289@gmail.com",
         "linkedin": "https://www.linkedin.com/in/sachin-sagar-47155a1ab/",
         "github": "https://github.com/Sachin-Sagar",
@@ -58,11 +58,15 @@
         ]
     },
     "courses": [
-        "Mathematics for Machine Learning Specialization",
-        "Computer Vision Basics",
-        "Machine Learning",
-        "ARM Cortex (STM32) Fundamentals: Building Embedded Systems",
-        "Financial Markets"
+        "Mathworks: Deep Learning for Computer Vision Specialization",
+        "Coursera: ARM Cortex (STM32) Deep Dive: Mastering Embedded Systems",
+        "Coursera: ARM Cortex (STM32) Fundamentals: Building Embedded Systems",
+        "Arm: Arm Cortex-M Processors Overview",
+        "Arm: Computer Architecture Essentials on Arm",
+        "Arm: Introduction to Microprocessors",
+        "Imperial College London: Mathematics for Machine Learning Specialization",
+        "University at Buffalo & SUNY: Computer Vision Basics",
+        "Stanford Online: Machine Learning"
     ],
     "experience": {
         "professional": [
