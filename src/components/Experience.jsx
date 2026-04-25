@@ -7,6 +7,7 @@ import batl_icon from '../assets/pics/BATL_icon.jpg';
 import reevia_icon from '../assets/pics/reevia_icon.jpg';
 import forbes_icon from '../assets/pics/forbes-marshall.png';
 import mpc_ctrl from '../assets/pics/MPC_ctrlLoop.png';
+import morphing_wing from '../assets/pics/morphing_wing.png';
 
 const companyIcons = {
     'Engine Testing (Internship)': batl_icon,
@@ -83,8 +84,9 @@ const TimelineSection = ({ title, data }) => (
                                 <span className="period">{item.period}</span>
                             </div>
                             {item.role === 'Control of Camber Morphing Wing' && (
-                                <div className="raftar-banner" style={{marginTop: '1rem', marginBottom: '1rem', marginLeft: '-1.5rem', textAlign: 'left'}}>
-                                    <img src={mpc_ctrl} alt="MPC Control Loop" style={{ maxWidth: '95%' }} />
+                                <div className="raftar-banner" style={{marginTop: '1rem', marginBottom: '1rem', marginLeft: '-1.5rem', textAlign: 'left', display: 'flex', gap: '1rem', alignItems: 'center'}}>
+                                    <img src={mpc_ctrl} alt="MPC Control Loop" style={{ width: '50%', objectFit: 'contain', borderRadius: '0.5rem' }} />
+                                    <img src={morphing_wing} alt="Morphing Wing" style={{ width: '50%', objectFit: 'contain', borderRadius: '0.5rem' }} />
                                 </div>
                             )}
                             <h4 className="company">{item.company}</h4>
