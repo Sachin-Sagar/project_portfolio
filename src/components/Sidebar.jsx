@@ -4,9 +4,52 @@ import avatar from '../assets/pics/IITM_logo.png';
 
 const Sidebar = ({ basics }) => {
     const [theme, setTheme] = useState('light');
+    const [isCollapsed, setIsCollapsed] = useState(true);
+
+    const handleLinkClick = () => {
+        if (window.innerWidth <= 980) {
+            setIsCollapsed(true);
+        }
+    };
 
     useEffect(() => {
+        let ticking = false;
+
+        const updateScroll = () => {
+            const inner = document.querySelector('#header > .inner');
+            const footer = document.querySelector('#header > #footer');
+
+            if (window.innerWidth > 980) {
+                const scrollY = window.scrollY;
+                const offset = scrollY * 0.02;
+                if (inner) inner.style.transform = `translateY(-${offset}px)`;
+                if (footer) footer.style.transform = `translateY(-${offset}px)`;
+            } else {
+                if (inner) inner.style.transform = 'none';
+                if (footer) footer.style.transform = 'none';
+            }
+            ticking = false;
+        };
+
+        const handleScroll = () => {
+            if (!ticking) {
+                window.requestAnimationFrame(updateScroll);
+                ticking = true;
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        window.addEventListener('resize', handleScroll, { passive: true });
+
+        // Initial call to set correct position
+        handleScroll();
+
         document.documentElement.setAttribute('data-theme', theme);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+            window.removeEventListener('resize', handleScroll);
+        };
     }, [theme]);
 
     const toggleTheme = () => {
@@ -14,7 +57,14 @@ const Sidebar = ({ basics }) => {
     };
 
     return (
-        <header id="header">
+        <header id="header" className={isCollapsed ? 'collapsed' : ''}>
+            <div className="mobile-top-bar">
+                <span className="mobile-title">{basics.name}</span>
+                <button className="mobile-toggle" onClick={() => setIsCollapsed(!isCollapsed)}>
+                    {isCollapsed ? '☰' : '✕'}
+                </button>
+            </div>
+
             <div className="inner">
                 <a href="#" className="image avatar">
                     <img src={avatar} alt="Profile Avatar" />
@@ -26,11 +76,11 @@ const Sidebar = ({ basics }) => {
                 </h1>
 
                 <nav className="sidebar-nav">
-                    <a href="#about">About</a>
-                    <a href="#experience">Experiences</a>
-                    <a href="#projects">Projects</a>
-                    <a href="#skills">Skills</a>
-                    <a href="#education">Education</a>
+                    <a href="#about" onClick={handleLinkClick}>About</a>
+                    <a href="#experience" onClick={handleLinkClick}>Experiences</a>
+                    <a href="#projects" onClick={handleLinkClick}>Projects</a>
+                    <a href="#skills" onClick={handleLinkClick}>Skills</a>
+                    <a href="#education" onClick={handleLinkClick}>Education</a>
                 </nav>
 
                 <div className="sidebar-actions">

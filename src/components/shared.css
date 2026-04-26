@@ -260,6 +260,22 @@ ul.bullet-points li::before {
 }
 
 @media (max-width: 768px) {
+    .timeline-container {
+        padding-left: 1.5em;
+        gap: 2em;
+    }
+    
+    .timeline-marker-img {
+        width: 40px;
+        height: 40px;
+        left: -2.3em;
+        top: -0.2em;
+    }
+
+    .skills-container {
+        grid-template-columns: 1fr;
+    }
+
     .timeline-header {
         flex-direction: column;
         align-items: flex-start;

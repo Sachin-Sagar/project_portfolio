@@ -61,6 +61,17 @@
   }
 }
 
+@media screen and (max-width: 768px) {
+  #main {
+    padding: 2em 1.5em 1.5em 1.5em;
+  }
+  
+  #main .section {
+    margin: 2em 0 0 0;
+    padding: 2em 0 0 0;
+  }
+}
+
 /* ==== ABOUT SECTION PROFILE PHOTO ==== */
 .about-content {
   position: relative;
