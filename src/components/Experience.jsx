@@ -17,7 +17,7 @@ const companyIcons = {
 
 export const TimelineSection = ({ title, data }) => (
     <div className="timeline-section">
-        <h3 className="timeline-category-title">{title}</h3>
+        <h3 className={title === 'College Experience' ? 'section-title' : 'timeline-category-title'}>{title}</h3>
         <div className="timeline-container">
             {data.map((item, index) => {
                 const icon = companyIcons[item.role];
@@ -32,8 +32,10 @@ export const TimelineSection = ({ title, data }) => (
                                         <img src={rfr_car} alt="Raftar Formula Racing" />
                                     </div>
                                 )}
-                                <h4 className="company grouped-company">{item.company}</h4>
-                                <span className="grouped-period">{item.period}</span>
+                                <div style={{ display: 'flex', alignItems: 'baseline', gap: '1rem', marginBottom: '1.5em' }}>
+                                    <h4 className="timeline-category-title" style={{ marginBottom: 0 }}>{item.company}</h4>
+                                    <span className="grouped-period">{item.period}</span>
+                                </div>
 
                                 <div className="grouped-roles-container">
                                     {item.roles.map((subRole, subIdx) => (
@@ -66,6 +68,11 @@ export const TimelineSection = ({ title, data }) => (
                 // Render a normal single experience
                 return (
                     <FadeInSection key={index}>
+                        {item.company === 'Final Year Project (VECH Lab, IIT Madras)' && (
+                            <h4 className="timeline-category-title" style={{ marginBottom: '0.5em' }}>
+                                Final Year Project (<a href="https://sites.google.com/view/vcehl-iitm/home" target="_blank" rel="noreferrer">VECH Lab</a>, IIT Madras)
+                            </h4>
+                        )}
                         <div className="timeline-block">
                             {icon ? (
                                 <img src={icon} alt={`${item.company} logo`} className="timeline-marker-img" />
@@ -89,7 +96,9 @@ export const TimelineSection = ({ title, data }) => (
                                         <img src={morphing_wing} alt="Morphing Wing" style={{ maxWidth: 'calc(40% - 0.5rem)', maxHeight: '100%', width: 'auto', height: 'auto', objectFit: 'contain', borderRadius: '0.35em' }} />
                                     </div>
                                 )}
-                                <h4 className="company">{item.company}</h4>
+                                {item.company !== 'Final Year Project (VECH Lab, IIT Madras)' && (
+                                    <h4 className="company">{item.company}</h4>
+                                )}
                                 <ul className="bullet-points">
                                     {item.bulletPoints.map((point, i) => (
                                         <li key={i}>{point}</li>

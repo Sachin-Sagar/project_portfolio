@@ -66,7 +66,7 @@ const Sidebar = ({ basics }) => {
             </div>
 
             <div className="inner">
-                <a href="#" className="image avatar">
+                <a href="https://www.iitm.ac.in/" target="_blank" rel="noreferrer" className="image avatar">
                     <img src={avatar} alt="Profile Avatar" />
                 </a>
                 <h1>

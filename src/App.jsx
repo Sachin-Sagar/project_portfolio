@@ -41,7 +41,7 @@ const Home = ({ basics, skills, experience, projects, education, courses }) => (
 
       <Projects projectsData={projects} />
 
-      <section className="section experience-section" style={{ borderTop: 'none', margin: '0', padding: '0' }}>
+      <section className="section experience-section" style={{ borderTop: 'none', marginTop: '6em', padding: '0' }}>
           {experience.college && experience.college.length > 0 && (
               <TimelineSection title="College Experience" data={experience.college} />
           )}

@@ -184,22 +184,15 @@ ul.bullet-points li::before {
 
 /* Projects CSS */
 .projects-grid {
-    display: flex;
-    flex-direction: column;
-    /* Stack vertically like Strata */
-    gap: 4em;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3em;
 }
 
-.project-card {
-    padding: 0;
-    background: transparent;
-    border: none;
-    backdrop-filter: none;
-}
-
-.project-card:hover {
-    transform: none;
-    border-color: transparent;
+@media (max-width: 980px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 .project-title {

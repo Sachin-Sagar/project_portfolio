@@ -12,7 +12,9 @@ const Education = ({ educationData }) => {
                     <FadeInSection key={index}>
                     <div className="timeline-item glass-panel">
                         <div className="raftar-banner" style={{ marginBottom: '1.5em', marginTop: '0.5em', textAlign: 'left' }}>
-                            <img src={uni_logo} alt="IIT Madras Logo" style={{ width: '500px' }} />
+                            <a href="https://www.iitm.ac.in/" target="_blank" rel="noreferrer">
+                                <img src={uni_logo} alt="IIT Madras Logo" style={{ width: '500px' }} />
+                            </a>
                         </div>
                         <div className="timeline-header">
                             <h3 className="role">{item.degree}</h3>
