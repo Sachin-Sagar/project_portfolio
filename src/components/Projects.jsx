@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './shared.css';
 import FadeInSection from './FadeInSection';
 
@@ -23,7 +24,11 @@ const Projects = ({ projectsData }) => {
                         <FadeInSection key={index}>
                         <div className="project-card glass-panel">
                             <h3 className="project-title">
-                                {assets?.link ? (
+                                {project.id ? (
+                                    <Link to={`/project/${project.id}`} style={{ color: 'inherit', textDecoration: 'none', borderBottom: 'none' }}>
+                                        {project.name} <span style={{ fontSize: '0.6em', color: 'var(--accent-primary)', marginLeft: '10px' }}>&#128196; View Details</span>
+                                    </Link>
+                                ) : assets?.link ? (
                                     <a href={assets.link} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none', borderBottom: 'none' }}>
                                         {project.name} <span style={{ fontSize: '0.6em', color: 'var(--accent-primary)', marginLeft: '10px' }}>&#128196; View Poster</span>
                                     </a>

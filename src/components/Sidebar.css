@@ -218,4 +218,11 @@ ul.copyright a:hover {
     #header.collapsed {
         padding: 1.25em 1.5em;
     }
+
+    #header .image.avatar {
+        width: 40vw;
+        /* Adjusts photo size to 40% of the screen width */
+        max-width: 250px;
+        /* Prevents it from getting larger than the desktop size */
+    }
 }

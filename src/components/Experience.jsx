@@ -15,7 +15,7 @@ const companyIcons = {
     'Simulation Engineer': forbes_icon
 };
 
-const TimelineSection = ({ title, data }) => (
+export const TimelineSection = ({ title, data }) => (
     <div className="timeline-section">
         <h3 className="timeline-category-title">{title}</h3>
         <div className="timeline-container">

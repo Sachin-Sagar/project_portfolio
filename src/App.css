@@ -95,13 +95,14 @@
   clear: both;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 768px) {
   .about-profile-photo {
     float: none;
     margin: 0 auto 1.5em auto;
     /* Center on mobile */
-    max-width: 100%;
-    /* Or some fixed size for mobile */
+    width: 40vw;
+    /* Size as a percentage of webpage width */
+    max-width: 200px;
   }
 }
 
