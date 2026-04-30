@@ -104,6 +104,13 @@ export const TimelineSection = ({ title, data }) => (
                                         <li key={i}>{point}</li>
                                     ))}
                                 </ul>
+                                {item.role === 'Control of Camber Morphing Wing' && (
+                                    <div style={{ display: 'flex', gap: '1rem', marginTop: '1.5rem', flexWrap: 'wrap' }}>
+                                        <a href={`${import.meta.env.BASE_URL}docs/BTP_Poster.pdf`} target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>Poster</a>
+                                        <a href={`${import.meta.env.BASE_URL}docs/BTP_Report_signed.pdf`} target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>Report</a>
+                                        <a href="https://github.com/Sachin-Sagar/matlab_MPC_morphingWing" target="_blank" rel="noopener noreferrer" className="btn" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>GitHub Repo</a>
+                                    </div>
+                                )}
                             </div>
                         </div>
                     </FadeInSection>
