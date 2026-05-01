@@ -2,9 +2,10 @@ import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import portfolioData from '../data.json';
 import FadeInSection from './FadeInSection';
+import FFTDetails from './FFTDetails';
 import './shared.css';
 
-const ProjectDetail = () => {
+const ProjectDetail = ({ theme, toggleTheme }) => {
     const { projectId } = useParams();
     
     // Find the project matching the ID from the URL
@@ -25,12 +26,15 @@ const ProjectDetail = () => {
     }
 
     return (
-        <div id="main" style={{ marginLeft: 0, width: '100%', maxWidth: '800px', margin: '0 auto', padding: '4em 2em' }}>
+        <div id="main" style={{ marginLeft: 0, width: '100%', maxWidth: '1000px', margin: '0 auto', padding: '4em 2em' }}>
             <FadeInSection>
-                <div style={{ marginBottom: '2em' }}>
+                <div style={{ marginBottom: '2em', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                     <Link to="/" className="btn" style={{ fontSize: '0.9em', padding: '0 1em', height: '2.5em', lineHeight: '2.5em' }}>
                         &larr; Back to Home
                     </Link>
+                    <button onClick={toggleTheme} className="btn" style={{ padding: '0 1em', height: '2.5em', lineHeight: '2.5em', fontSize: '0.9em' }}>
+                        {theme === 'light' ? '🌙 Dark' : '☀️ Light'}
+                    </button>
                 </div>
                 
                 <h1 className="hero-title">{project.name}</h1>
@@ -47,19 +51,23 @@ const ProjectDetail = () => {
                     </div>
                 )}
 
-                {project.blog && (
-                    <section className="section" style={{ marginTop: '2em', paddingTop: '2em' }}>
-                        <h2 className="section-title">Overview</h2>
-                        <div className="project-blog" style={{ whiteSpace: 'pre-wrap', lineHeight: '1.8' }}>
-                            {project.blog}
-                        </div>
-                    </section>
+                {project.id === 'fft-embedded-c' ? (
+                    <FFTDetails project={project} />
+                ) : (
+                    project.blog && (
+                        <section className="section" style={{ marginTop: '2em', paddingTop: '2em' }}>
+                            <h2 className="section-title">Overview</h2>
+                            <div className="project-blog" style={{ whiteSpace: 'pre-wrap', lineHeight: '1.8' }}>
+                                {project.blog}
+                            </div>
+                        </section>
+                    )
                 )}
 
                 {project.results && project.results.length > 0 && (
                     <section className="section" style={{ marginTop: '3em', paddingTop: '2em' }}>
                         <h2 className="section-title">Key Results</h2>
-                        <ul className="bullet-points" style={{ fontSize: '1.1em', marginTop: '1em' }}>
+                        <ul className="bullet-points" style={{ marginTop: '1em' }}>
                             {project.results.map((result, i) => (
                                 <li key={i} style={{ marginBottom: '0.8em' }}>{result}</li>
                             ))}

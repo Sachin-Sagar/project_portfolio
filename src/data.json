@@ -193,14 +193,14 @@
         },
         {
             "id": "fft-embedded-c",
-            "name": "FFT using Embedded C",
+            "name": "Realtime FFT using embedded C",
             "context": "Signal Processing",
             "period": "Personal",
             "bulletPoints": [
                 "Implemented a highly optimized Fast Fourier Transform (FFT) algorithm from scratch in C.",
                 "Targeted for resource-constrained ARM Cortex-M microcontrollers."
             ],
-            "blog": "In many embedded signal processing applications, computing the frequency spectrum of a signal in real-time is critical. This project involved developing a highly optimized Radix-2 Fast Fourier Transform (FFT) algorithm entirely in Embedded C, without relying on heavy external libraries.\n\nThe focus was heavily on optimizing execution speed and minimizing the memory footprint to ensure it could run comfortably on resource-constrained microcontrollers like the ARM Cortex-M series. Techniques such as bit-reversal algorithms, pre-computed twiddle factor tables, and fixed-point arithmetic were heavily utilized to squeeze out maximum performance.",
+            "blog": "Developing a highly optimized Radix-2 Fast Fourier Transform (FFT) algorithm entirely in Embedded C, this project focused on real-time signal processing without external libraries. By implementing bit-reversal sorting, pre-computed twiddle factor tables, and fixed-point arithmetic, the algorithm was tuned for maximum performance and minimal memory footprint on resource-constrained ARM Cortex-M microcontrollers.",
             "results": [
                 "Execution time optimized to under 1ms for a 1024-point FFT.",
                 "Memory footprint reduced by 40% compared to standard library implementations.",
@@ -231,16 +231,16 @@
             "context": "Dynamical Systems",
             "period": "Personal",
             "bulletPoints": [
-                "Built an interactive simulation suite for chaotic dynamical systems.",
-                "Modeled the Lorenz attractor and double pendulum systems."
+                "Developed a hardware-accelerated 2D plotting engine using SFML in C++.",
+                "Implemented interactive Bifurcation Diagrams and Lorenz Attractors with constant point density zooming."
             ],
-            "blog": "This project is an exploration into the fascinating world of nonlinear dynamics and Chaos Theory. The goal was to build a visual and interactive simulation suite to model systems that exhibit high sensitivity to initial conditions.\n\nThe suite includes models for classic chaotic systems such as the Lorenz strange attractor and the double pendulum. To ensure physical accuracy and stability over long simulation periods, I implemented robust numerical integration algorithms, specifically the 4th-Order Runge-Kutta (RK4) method. It serves as both an educational tool and a sandbox for studying deterministic chaos.",
+            "blog": "An interactive, object-oriented C++ visualization tool for exploring chaotic dynamical systems and non-linear dynamics. Inspired by James Gleick's *Chaos*, this project features a custom-built, hardware-accelerated 2D plotting library using SFML. The suite includes simulations for the Logistic Map Bifurcation Diagram and the Lorenz Attractor, utilizing 4th-Order Runge-Kutta (RK4) numerical integration for physical accuracy.",
             "results": [
-                "Implemented stable RK4 numerical integration for complex non-linear ODEs.",
-                "Created real-time, interactive 3D visualizations of phase spaces.",
-                "Demonstrated the butterfly effect with diverging trajectories."
+                "Built a generalized 2D plotting engine capable of rendering massive datasets using Vertex Arrays.",
+                "Implemented smooth interactive panning and infinite zoom with constant point density.",
+                "Achieved high-performance real-time simulation using -O3 optimized C++ loops."
             ],
-            "gitRepo": "https://github.com/Sachin-Sagar/chaos-simulations"
+            "gitRepo": "https://github.com/Sachin-Sagar/chaos_cpp"
         }
     ],
     "education": [

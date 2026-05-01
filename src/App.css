@@ -39,9 +39,9 @@
 }
 
 .hero-summary {
-  font-size: 1.15em;
+  font-size: 1em;
   margin-bottom: 2em;
-  color: #494949;
+  color: var(--text-primary);
 }
 
 @media screen and (max-width: 1280px) {

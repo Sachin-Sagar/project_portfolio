@@ -72,8 +72,8 @@ a:hover {
 .btn {
   background-color: transparent;
   border-radius: 0.35em;
-  border: solid 3px #efefef;
-  color: #787878 !important;
+  border: solid 2px var(--glass-border);
+  color: var(--text-primary) !important;
   cursor: pointer;
   display: inline-block;
   font-weight: 400;

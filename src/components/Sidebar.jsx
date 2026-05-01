@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './Sidebar.css';
 import avatar from '../assets/pics/IITM_logo.png';
 
-const Sidebar = ({ basics }) => {
-    const [theme, setTheme] = useState('light');
+const Sidebar = ({ basics, theme, toggleTheme }) => {
     const [isCollapsed, setIsCollapsed] = useState(true);
 
     const handleLinkClick = () => {
@@ -44,17 +43,11 @@ const Sidebar = ({ basics }) => {
         // Initial call to set correct position
         handleScroll();
 
-        document.documentElement.setAttribute('data-theme', theme);
-
         return () => {
             window.removeEventListener('scroll', handleScroll);
             window.removeEventListener('resize', handleScroll);
         };
-    }, [theme]);
-
-    const toggleTheme = () => {
-        setTheme(prev => (prev === 'light' ? 'dark' : 'light'));
-    };
+    }, []);
 
     return (
         <header id="header" className={isCollapsed ? 'collapsed' : ''}>

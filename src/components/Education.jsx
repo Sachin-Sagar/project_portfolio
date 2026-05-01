@@ -21,7 +21,7 @@ const Education = ({ educationData }) => {
                             <span className="period">{item.year}</span>
                         </div>
                         <h4 className="company gradient-text">{item.institution}</h4>
-                        {item.minor && <p style={{ marginBottom: '0.2rem', color: '#494949', fontWeight: '500' }}>Minor: {item.minor}</p>}
+                        {item.minor && <p style={{ marginBottom: '0.2rem', color: 'var(--text-primary)', fontWeight: '500' }}>Minor: {item.minor}</p>}
                         <p style={{ marginBottom: '0.5rem', color: 'var(--text-secondary)' }}>CGPA: {item.cgpa}</p>
                         {item.notes && <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>{item.notes}</p>}
                     </div>

@@ -13,9 +13,9 @@ import ProjectDetail from './components/ProjectDetail';
 
 import prof_photo from './assets/pics/prof_photo.png';
 
-const Home = ({ basics, skills, experience, projects, education, courses }) => (
+const Home = ({ basics, skills, experience, projects, education, courses, theme, toggleTheme }) => (
   <div className="app-container">
-    <Sidebar basics={basics} />
+    <Sidebar basics={basics} theme={theme} toggleTheme={toggleTheme} />
 
     <main id="main">
       <FadeInSection>
@@ -60,12 +60,40 @@ const Home = ({ basics, skills, experience, projects, education, courses }) => (
 
 function App() {
   const { basics, skills, experience, projects, education, courses } = portfolioData;
+  
+  // Initialize theme from localStorage or default to light
+  const [theme, setTheme] = React.useState(() => {
+    return localStorage.getItem('portfolio-theme') || 'light';
+  });
+
+  // Update localStorage and data-theme attribute whenever theme changes
+  React.useEffect(() => {
+    localStorage.setItem('portfolio-theme', theme);
+    document.documentElement.setAttribute('data-theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme(prev => (prev === 'light' ? 'dark' : 'light'));
+  };
 
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home basics={basics} skills={skills} experience={experience} projects={projects} education={education} courses={courses} />} />
-        <Route path="/project/:projectId" element={<ProjectDetail />} />
+        <Route path="/" element={
+          <Home 
+            basics={basics} 
+            skills={skills} 
+            experience={experience} 
+            projects={projects} 
+            education={education} 
+            courses={courses} 
+            theme={theme}
+            toggleTheme={toggleTheme}
+          />
+        } />
+        <Route path="/project/:projectId" element={
+          <ProjectDetail theme={theme} toggleTheme={toggleTheme} />
+        } />
       </Routes>
     </Router>
   );
