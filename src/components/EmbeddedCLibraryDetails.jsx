@@ -1,0 +1,91 @@
+import React from 'react';
+import './shared.css';
+
+const EmbeddedCLibraryDetails = ({ project }) => {
+    return (
+        <div className="embedded-lib-details">
+            {project && project.blog && (
+                <section className="section" style={{ marginTop: '2em', paddingTop: '2em' }}>
+                    <h2 className="section-title">Overview</h2>
+                    <div className="project-blog" style={{ whiteSpace: 'pre-wrap', lineHeight: '1.8' }}>
+                        {project.blog}
+                    </div>
+                </section>
+            )}
+
+            {/* FFT Section */}
+            <div style={{ borderLeft: '4px solid var(--accent-primary)', paddingLeft: '1.5em', marginTop: '4em' }}>
+                <h2 style={{ fontSize: '1.8em', marginBottom: '0.5em' }}>1. Real-time Signal Processing (FFT)</h2>
+                <p style={{ color: 'var(--text-secondary)', fontStyle: 'italic' }}>Optimized Radix-2 Implementation</p>
+            </div>
+
+            <section className="section" style={{ marginTop: '2em' }}>
+                <h2 className="section-title">Importance in Embedded Systems</h2>
+                <p style={{ lineHeight: '1.8' }}>
+                    The Fast Fourier Transform (FFT) is foundational for analyzing signals in the frequency domain. In embedded applications, real-time frequency analysis is critical for several use cases:
+                </p>
+                <ul className="bullet-points" style={{ marginTop: '1em', lineHeight: '1.8' }}>
+                    <li><strong>Audio Processing:</strong> Equalization, noise cancellation, and pitch detection require immediate frequency breakdown of audio signals.</li>
+                    <li><strong>Telecommunications:</strong> Core to Orthogonal Frequency-Division Multiplexing (OFDM) used in modern wireless communications.</li>
+                    <li><strong>Vibration Analysis:</strong> Detecting mechanical failures in industrial motors by monitoring frequency shifts in accelerometer data.</li>
+                </ul>
+            </section>
+
+            <section className="section" style={{ marginTop: '3em', paddingTop: '2em' }}>
+                <h2 className="section-title">The Cooley-Tukey Method</h2>
+                <div style={{ lineHeight: '1.8' }}>
+                    <p>
+                        The Cooley-Tukey algorithm reduces complexity from O(N²) to O(N log N) by recursively breaking down the N-point DFT into smaller DFTs. My implementation focuses on the <strong>Radix-2 Butterfly Operation</strong>:
+                    </p>
+                    <div className="math-equation" style={{ margin: '1.5em 0', padding: '1em', background: 'var(--bg-secondary)', borderRadius: '8px', textAlign: 'center', fontFamily: 'serif' }}>
+                        <div style={{ marginBottom: '0.5em' }}>X<sub>k</sub> = E<sub>k</sub> + W<sub>N</sub><sup>k</sup> · O<sub>k</sub></div>
+                        <div>X<sub>k + N/2</sub> = E<sub>k</sub> - W<sub>N</sub><sup>k</sup> · O<sub>k</sub></div>
+                    </div>
+                    <p>
+                        To achieve sub-millisecond execution, I implemented a <strong>Bit-Reversal Sorting</strong> algorithm and a pre-computed <strong>Twiddle Factor LUT</strong> (Look-Up Table) to eliminate runtime trigonometric calculations.
+                    </p>
+                </div>
+            </section>
+
+            {/* Quaternions Section */}
+            <div style={{ borderLeft: '4px solid var(--accent-secondary, #ff4d4d)', paddingLeft: '1.5em', marginTop: '5em' }}>
+                <h2 style={{ fontSize: '1.8em', marginBottom: '0.5em' }}>2. 3D Kinematics (Quaternions)</h2>
+                <p style={{ color: 'var(--text-secondary)', fontStyle: 'italic' }}>Robust Orientation & Coordinate Rotation</p>
+            </div>
+
+            <section className="section" style={{ marginTop: '2em' }}>
+                <h2 className="section-title">Why Quaternions?</h2>
+                <p style={{ lineHeight: '1.8' }}>
+                    While Euler angles (Roll, Pitch, Yaw) are intuitive, they suffer from <strong>Gimbal Lock</strong>—a loss of one degree of freedom when two axes align. Quaternions represent rotations as a vector in 4D space, providing a smooth, continuous representation without singularities.
+                </p>
+                <div className="math-equation" style={{ margin: '1.5em 0', padding: '1em', background: 'var(--bg-secondary)', borderRadius: '8px', textAlign: 'center', fontFamily: 'serif' }}>
+                    q = w + xi + yj + zk &nbsp; | &nbsp; w² + x² + y² + z² = 1
+                </div>
+            </section>
+
+            <section className="section" style={{ marginTop: '3em', paddingTop: '2em' }}>
+                <h2 className="section-title">Optimized Vector Rotation</h2>
+                <p style={{ lineHeight: '1.8' }}>
+                    A standard rotation involves $p' = qpq^{-1}$. However, for embedded systems, I implemented the <strong>specialized rotation formula</strong> which reduces the number of floating-point multiplications:
+                </p>
+                <div className="math-equation" style={{ margin: '1.5em 0', padding: '1em', background: 'var(--bg-secondary)', borderRadius: '8px', textAlign: 'center', fontFamily: 'serif' }}>
+                    v' = v + 2w(q<sub>vec</sub> × v) + 2(q<sub>vec</sub> × (q<sub>vec</sub> × v))
+                </div>
+                <p style={{ lineHeight: '1.8' }}>
+                    This formula is mathematically equivalent to the sandwich product but avoids the overhead of full quaternion multiplication by treating the vector part separately.
+                </p>
+            </section>
+
+            <section className="section" style={{ marginTop: '3em', paddingTop: '2em' }}>
+                <h2 className="section-title">Implementation Highlights</h2>
+                <ul className="bullet-points" style={{ marginTop: '1em', lineHeight: '1.8' }}>
+                    <li><strong>Static Memory:</strong> No dynamic allocation (no <code>malloc</code>), ensuring deterministic behavior for RTOS environments.</li>
+                    <li><strong>Pass-by-Pointer:</strong> Minimized stack usage by passing large structures via pointers.</li>
+                    <li><strong>Normalization:</strong> Periodic re-normalization to combat floating-point drift over long-duration simulations.</li>
+                </ul>
+            </section>
+        </div>
+    );
+};
+
+export default EmbeddedCLibraryDetails;

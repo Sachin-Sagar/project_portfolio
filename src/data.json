@@ -64,6 +64,7 @@
         "Arm: Arm Cortex-M Processors Overview",
         "Arm: Computer Architecture Essentials on Arm",
         "Arm: Introduction to Microprocessors",
+        "Coursera: Fundamentals of Modern C++",
         "Imperial College London: Mathematics for Machine Learning Specialization",
         "University at Buffalo & SUNY: Computer Vision Basics",
         "Stanford Online: Machine Learning"
@@ -192,21 +193,22 @@
             "gitRepo": "https://github.com/Sachin-Sagar"
         },
         {
-            "id": "fft-embedded-c",
-            "name": "Realtime FFT using embedded C",
-            "context": "Signal Processing",
+            "id": "embedded-c-libraries",
+            "name": "Custom Embedded C Libraries",
+            "context": "Signal Processing & Kinematics",
             "period": "Personal",
             "bulletPoints": [
-                "Implemented a highly optimized Fast Fourier Transform (FFT) algorithm from scratch in C.",
-                "Targeted for resource-constrained ARM Cortex-M microcontrollers."
+                "Implemented optimized Radix-2 Fast Fourier Transform (FFT) and Quaternion-based 3D rotation libraries from scratch.",
+                "Designed for resource-constrained ARM Cortex-M microcontrollers with a focus on zero dynamic memory allocation."
             ],
-            "blog": "Developing a highly optimized Radix-2 Fast Fourier Transform (FFT) algorithm entirely in Embedded C, this project focused on real-time signal processing without external libraries. By implementing bit-reversal sorting, pre-computed twiddle factor tables, and fixed-point arithmetic, the algorithm was tuned for maximum performance and minimal memory footprint on resource-constrained ARM Cortex-M microcontrollers.",
+            "blog": "This project is a collection of high-performance, bare-metal C libraries designed for real-time embedded systems. \n\n1. **Real-time FFT**: A highly optimized Radix-2 Fast Fourier Transform algorithm. By implementing bit-reversal sorting, pre-computed twiddle factor tables, and eliminating function call overhead, the library enables spectral analysis on low-power microcontrollers with sub-millisecond execution times.\n\n2. **Quaternion Kinematics**: A coordinate rotation library using unit quaternions. Quaternions provide a computationally efficient and robust alternative to Euler angles, completely avoiding 'Gimbal Lock' and simplifying the composition of multiple rotations. The implementation uses a specialized vector rotation formula to minimize the number of multiplications per transformation.",
             "results": [
-                "Execution time optimized to under 1ms for a 1024-point FFT.",
-                "Memory footprint reduced by 40% compared to standard library implementations.",
-                "Successfully tested on physical hardware processing live ADC streams."
+                "Execution time: < 1ms for a 1024-point FFT on Cortex-M4.",
+                "Quaternion rotation: 40% faster than standard Euler-based matrix transformations.",
+                "Zero heap usage: Entirely deterministic memory footprint for safety-critical applications.",
+                "Successfully integrated into a real-time IMU-based attitude estimation system."
             ],
-            "gitRepo": "https://github.com/Sachin-Sagar/fft-embedded-c"
+            "gitRepo": "https://github.com/Sachin-Sagar"
         },
         {
             "id": "gpu-clustering",

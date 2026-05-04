@@ -10,6 +10,8 @@ const projectAssets = {
     "Control of Camber Morphing Wing": {
         image: mpcLoopImg,
         link: posterDoc
+    },
+    "Custom Embedded C Libraries": {
     }
 };
 

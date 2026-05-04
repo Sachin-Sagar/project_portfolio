@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import portfolioData from '../data.json';
 import FadeInSection from './FadeInSection';
-import FFTDetails from './FFTDetails';
+import EmbeddedCLibraryDetails from './EmbeddedCLibraryDetails';
 import './shared.css';
 
 const ProjectDetail = ({ theme, toggleTheme }) => {
@@ -51,8 +51,8 @@ const ProjectDetail = ({ theme, toggleTheme }) => {
                     </div>
                 )}
 
-                {project.id === 'fft-embedded-c' ? (
-                    <FFTDetails project={project} />
+                {project.id === 'embedded-c-libraries' ? (
+                    <EmbeddedCLibraryDetails project={project} />
                 ) : (
                     project.blog && (
                         <section className="section" style={{ marginTop: '2em', paddingTop: '2em' }}>
