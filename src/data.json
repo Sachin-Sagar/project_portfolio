@@ -208,7 +208,9 @@
                 "Zero heap usage: Entirely deterministic memory footprint for safety-critical applications.",
                 "Successfully integrated into a real-time IMU-based attitude estimation system."
             ],
-            "gitRepo": "https://github.com/Sachin-Sagar"
+            "gitRepo": "https://github.com/Sachin-Sagar",
+            "fftGitRepo": "https://github.com/Sachin-Sagar/C_Realtime_FFT",
+            "quaternionGitRepo": "https://github.com/Sachin-Sagar"
         },
         {
             "id": "gpu-clustering",
