@@ -210,7 +210,7 @@
             ],
             "gitRepo": "https://github.com/Sachin-Sagar",
             "fftGitRepo": "https://github.com/Sachin-Sagar/C_Realtime_FFT",
-            "quaternionGitRepo": "https://github.com/Sachin-Sagar"
+            "quaternionGitRepo": "https://github.com/Sachin-Sagar/embdC_quaternions"
         },
         {
             "id": "gpu-clustering",

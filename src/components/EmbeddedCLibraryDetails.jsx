@@ -43,7 +43,7 @@ const EmbeddedCLibraryDetails = ({ project }) => {
                     <p>
                         The Cooley-Tukey algorithm reduces complexity from O(N²) to O(N log N) by recursively breaking down the N-point DFT into smaller DFTs. My implementation focuses on the <strong>Radix-2 Butterfly Operation</strong>:
                     </p>
-                    <div className="math-equation" style={{ margin: '1.5em 0', padding: '1em', background: 'var(--bg-secondary)', borderRadius: '8px', textAlign: 'center', fontFamily: 'serif' }}>
+                    <div className="math-equation">
                         <div style={{ marginBottom: '0.5em' }}>X<sub>k</sub> = E<sub>k</sub> + W<sub>N</sub><sup>k</sup> · O<sub>k</sub></div>
                         <div>X<sub>k + N/2</sub> = E<sub>k</sub> - W<sub>N</sub><sup>k</sup> · O<sub>k</sub></div>
                     </div>
@@ -70,7 +70,7 @@ const EmbeddedCLibraryDetails = ({ project }) => {
                 <p style={{ lineHeight: '1.8' }}>
                     While Euler angles (Roll, Pitch, Yaw) are intuitive, they suffer from <strong>Gimbal Lock</strong>—a loss of one degree of freedom when two axes align. Quaternions represent rotations as a vector in 4D space, providing a smooth, continuous representation without singularities.
                 </p>
-                <div className="math-equation" style={{ margin: '1.5em 0', padding: '1em', background: 'var(--bg-secondary)', borderRadius: '8px', textAlign: 'center', fontFamily: 'serif' }}>
+                <div className="math-equation">
                     q = w + xi + yj + zk &nbsp; | &nbsp; w² + x² + y² + z² = 1
                 </div>
             </section>
@@ -78,9 +78,15 @@ const EmbeddedCLibraryDetails = ({ project }) => {
             <section className="section" style={{ marginTop: '3em', paddingTop: '2em' }}>
                 <h2 className="section-title">Optimized Vector Rotation</h2>
                 <p style={{ lineHeight: '1.8' }}>
-                    A standard rotation involves $p' = qpq^{-1}$. However, for embedded systems, I implemented the <strong>specialized rotation formula</strong> which reduces the number of floating-point multiplications:
+                    A standard rotation involves the transformation:
                 </p>
-                <div className="math-equation" style={{ margin: '1.5em 0', padding: '1em', background: 'var(--bg-secondary)', borderRadius: '8px', textAlign: 'center', fontFamily: 'serif' }}>
+                <div className="math-equation">
+                    p' = qpq⁻¹
+                </div>
+                <p style={{ lineHeight: '1.8' }}>
+                    However, for embedded systems, I implemented the <strong>specialized rotation formula</strong> which reduces the number of floating-point multiplications:
+                </p>
+                <div className="math-equation">
                     v' = v + 2w(q<sub>vec</sub> × v) + 2(q<sub>vec</sub> × (q<sub>vec</sub> × v))
                 </div>
                 <p style={{ lineHeight: '1.8' }}>
