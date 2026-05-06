@@ -15,14 +15,16 @@ const EmbeddedCLibraryDetails = ({ project }) => {
 
             {/* FFT Section */}
             <div style={{ borderLeft: '4px solid var(--accent-primary)', paddingLeft: '1.5em', marginTop: '4em' }}>
-                <h2 style={{ fontSize: '1.8em', marginBottom: '0.5em' }}>1. Real-time Signal Processing (FFT)</h2>
-                <p style={{ color: 'var(--text-secondary)', fontStyle: 'italic' }}>Optimized Radix-2 Implementation</p>
-                {project?.fftGitRepo && (
-                    <a href={project.fftGitRepo} target="_blank" rel="noreferrer" className="btn btn-primary" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginTop: '1em', fontSize: '0.85em', padding: '0.5em 1em' }}>
-                        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                        View on GitHub
-                    </a>
-                )}
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1em' }}>
+                    <h2 style={{ fontSize: '1.8em', margin: 0 }}>1. Real-time Signal Processing (FFT)</h2>
+                    {project?.fftGitRepo && (
+                        <a href={project.fftGitRepo} target="_blank" rel="noreferrer" className="btn btn-primary" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', fontSize: '0.85em', padding: '0.5em 1em' }}>
+                            <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                            View on GitHub
+                        </a>
+                    )}
+                </div>
+                <p style={{ color: 'var(--text-secondary)', fontStyle: 'italic', marginTop: '0.5em' }}>Optimized Radix-2 Implementation</p>
             </div>
 
             <section className="section" style={{ marginTop: '2em' }}>
@@ -43,8 +45,9 @@ const EmbeddedCLibraryDetails = ({ project }) => {
                     <p>
                         The Cooley-Tukey algorithm reduces complexity from O(N²) to O(N log N) by recursively breaking down the N-point DFT into smaller DFTs. My implementation focuses on the <strong>Radix-2 Butterfly Operation</strong>:
                     </p>
-                    <div className="math-equation">
-                        <div style={{ marginBottom: '0.5em' }}>X<sub>k</sub> = E<sub>k</sub> + W<sub>N</sub><sup>k</sup> · O<sub>k</sub></div>
+                    <div className="math-equation" style={{ display: 'flex', justifyContent: 'center', gap: '3em', flexWrap: 'wrap', alignItems: 'center' }}>
+                        <div>X<sub>k</sub> = E<sub>k</sub> + W<sub>N</sub><sup>k</sup> · O<sub>k</sub></div>
+                        <div style={{ fontSize: '1.5em', fontStyle: 'normal', opacity: '0.2' }}>|</div>
                         <div>X<sub>k + N/2</sub> = E<sub>k</sub> - W<sub>N</sub><sup>k</sup> · O<sub>k</sub></div>
                     </div>
                     <p>
@@ -55,14 +58,16 @@ const EmbeddedCLibraryDetails = ({ project }) => {
 
             {/* Quaternions Section */}
             <div style={{ borderLeft: '4px solid var(--accent-secondary, #ff4d4d)', paddingLeft: '1.5em', marginTop: '5em' }}>
-                <h2 style={{ fontSize: '1.8em', marginBottom: '0.5em' }}>2. 3D Kinematics (Quaternions)</h2>
-                <p style={{ color: 'var(--text-secondary)', fontStyle: 'italic' }}>Robust Orientation & Coordinate Rotation</p>
-                {project?.quaternionGitRepo && (
-                    <a href={project.quaternionGitRepo} target="_blank" rel="noreferrer" className="btn btn-primary" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginTop: '1em', fontSize: '0.85em', padding: '0.5em 1em' }}>
-                        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                        View on GitHub
-                    </a>
-                )}
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1em' }}>
+                    <h2 style={{ fontSize: '1.8em', margin: 0 }}>2. 3D Kinematics (Quaternions)</h2>
+                    {project?.quaternionGitRepo && (
+                        <a href={project.quaternionGitRepo} target="_blank" rel="noreferrer" className="btn btn-primary" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', fontSize: '0.85em', padding: '0.5em 1em' }}>
+                            <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                            View on GitHub
+                        </a>
+                    )}
+                </div>
+                <p style={{ color: 'var(--text-secondary)', fontStyle: 'italic', marginTop: '0.5em' }}>Robust Orientation & Coordinate Rotation</p>
             </div>
 
             <section className="section" style={{ marginTop: '2em' }}>
@@ -78,19 +83,15 @@ const EmbeddedCLibraryDetails = ({ project }) => {
             <section className="section" style={{ marginTop: '3em', paddingTop: '2em' }}>
                 <h2 className="section-title">Optimized Vector Rotation</h2>
                 <p style={{ lineHeight: '1.8' }}>
-                    A standard rotation involves the transformation:
+                    Compared to the standard sandwich product, the specialized rotation formula significantly reduces floating-point multiplications:
                 </p>
-                <div className="math-equation">
-                    p' = qpq⁻¹
+                <div className="math-equation" style={{ display: 'flex', justifyContent: 'center', gap: '3em', flexWrap: 'wrap', alignItems: 'center' }}>
+                    <div>p' = qpq⁻¹</div>
+                    <div style={{ fontSize: '1.5em', fontStyle: 'normal', opacity: '0.2' }}>|</div>
+                    <div>v' = v + 2w(q<sub>vec</sub> × v) + 2(q<sub>vec</sub> × (q<sub>vec</sub> × v))</div>
                 </div>
                 <p style={{ lineHeight: '1.8' }}>
-                    However, for embedded systems, I implemented the <strong>specialized rotation formula</strong> which reduces the number of floating-point multiplications:
-                </p>
-                <div className="math-equation">
-                    v' = v + 2w(q<sub>vec</sub> × v) + 2(q<sub>vec</sub> × (q<sub>vec</sub> × v))
-                </div>
-                <p style={{ lineHeight: '1.8' }}>
-                    This formula is mathematically equivalent to the sandwich product but avoids the overhead of full quaternion multiplication by treating the vector part separately.
+                    This optimized approach treats the vector part separately, avoiding the overhead of full quaternion multiplication and making it ideal for real-time RTOS environments.
                 </p>
             </section>
 
