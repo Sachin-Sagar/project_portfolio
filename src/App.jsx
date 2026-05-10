@@ -39,7 +39,7 @@ const Home = ({ basics, skills, experience, projects, education, courses, theme,
           )}
       </section>
 
-      <Projects projectsData={projects} />
+      <Projects projectsData={projects} theme={theme} />
 
       <section className="section experience-section" style={{ borderTop: 'none', marginTop: '6em', padding: '0' }}>
           {experience.college && experience.college.length > 0 && (

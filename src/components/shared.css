@@ -205,7 +205,7 @@ ul.bullet-points li::before {
 .project-context {
     font-size: 1em;
     color: var(--text-secondary);
-    margin-bottom: 1.5em;
+    margin-bottom: 0.5em;
 }
 
 /* Skills CSS */
