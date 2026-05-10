@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import portfolioData from '../data.json';
 import FadeInSection from './FadeInSection';
 import EmbeddedCLibraryDetails from './EmbeddedCLibraryDetails';
+import ChaosTheoryDetails from './ChaosTheoryDetails';
 import './shared.css';
 
 const ProjectDetail = ({ theme, toggleTheme }) => {
@@ -53,6 +54,8 @@ const ProjectDetail = ({ theme, toggleTheme }) => {
 
                 {project.id === 'embedded-c-libraries' ? (
                     <EmbeddedCLibraryDetails project={project} />
+                ) : project.id === 'chaos-theory' ? (
+                    <ChaosTheoryDetails project={project} />
                 ) : (
                     project.blog && (
                         <section className="section" style={{ marginTop: '2em', paddingTop: '2em' }}>
