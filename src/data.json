@@ -17,8 +17,7 @@
             "MATLAB",
             "Simulink",
             "Stateflow",
-            "Shell Scripting",
-            "JavaScript"
+            "Shell Scripting"
         ],
         "Protocols": [
             "CAN (High-speed/FD)",
@@ -58,6 +57,8 @@
         ]
     },
     "courses": [
+        "Johns Hopkins University: Introduction to Concurrent Programming with GPUs",
+        "Johns Hopkins University: Introduction to Parallel Programming with CUDA",
         "Mathworks: Deep Learning for Computer Vision Specialization",
         "Coursera: ARM Cortex (STM32) Deep Dive: Mastering Embedded Systems",
         "Coursera: ARM Cortex (STM32) Fundamentals: Building Embedded Systems",
@@ -77,10 +78,10 @@
                 "period": "06/2025 - Present",
                 "color": "royalblue",
                 "bulletPoints": [
-                    "Developed the company's first end-to-end ADAS perception stack on the TI AWR1843 platform, and established tools for CI/CD workflows.",
+                    "Developed the company's first ADAS perception stack on the TI AWR1843 platform, and established standards for testing and validation.",
                     "Architected real-time sensor fusion on the onboard DSP, synchronizing IMU data, and vehicle odometry from the vehicle CAN bus with radar point clouds for clustering (DBSCAN) and tracking (JPDA). Designed an Interacting Mixture Model (IMM).",
-                    "Programmed and debugged the firmware using Code Composer Studio (CCS) within a FreeRTOS environment on AWR1843/1432 SoCs.",
-                    "Engineered a comprehensive web-based visualization suite using JavaScript to synchronize and replay Radar, Camera, and CAN log data.",
+                    "Optimized the perception and tracking algorithms to run on constrained hardware with zero heap allocation and in under 120kB of stack",
+                    "Developed a Hardware-In-Loop (HIL) setup to simulate road data from vehicle logs on the MCU, cutting down time spent on validation",
                     "Implemented active safety features such as Active Emergency Braking and Adaptive Cruise Control using track collision probability."
                 ]
             },

@@ -77,7 +77,7 @@ const Sidebar = ({ basics, theme, toggleTheme }) => {
                 </nav>
 
                 <div className="sidebar-actions">
-                    <a href="/resume.pdf" target="_blank" rel="noreferrer" className="btn btn-primary" style={{ fontSize: '0.9em', height: '2.5em', lineHeight: '2.2em', padding: '0 1.5em' }}>Download Resume</a>
+                    <a href={`${import.meta.env.BASE_URL}docs/ssagar_resume.pdf`} target="_blank" rel="noreferrer" className="btn btn-primary" style={{ fontSize: '0.9em', height: '2.5em', lineHeight: '2.2em', padding: '0 1.5em' }}>Download Resume</a>
                 </div>
 
                 <div className="social-links">
