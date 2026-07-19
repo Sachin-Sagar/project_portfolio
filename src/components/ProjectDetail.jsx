@@ -4,6 +4,7 @@ import portfolioData from '../data.json';
 import FadeInSection from './FadeInSection';
 import EmbeddedCLibraryDetails from './EmbeddedCLibraryDetails';
 import ChaosTheoryDetails from './ChaosTheoryDetails';
+import GPUClusteringDetails from './GPUClusteringDetails';
 import './shared.css';
 
 const ProjectDetail = ({ theme, toggleTheme }) => {
@@ -56,6 +57,8 @@ const ProjectDetail = ({ theme, toggleTheme }) => {
                     <EmbeddedCLibraryDetails project={project} />
                 ) : project.id === 'chaos-theory' ? (
                     <ChaosTheoryDetails project={project} />
+                ) : project.id === 'gpu-clustering' ? (
+                    <GPUClusteringDetails project={project} />
                 ) : (
                     project.blog && (
                         <section className="section" style={{ marginTop: '2em', paddingTop: '2em' }}>
