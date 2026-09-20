@@ -1,8 +1,8 @@
 {
     "basics": {
         "name": "Sachin Sagar",
-        "title": "Embedded Applications Engineer (ADAS)",
-        "company": "Bajaj Auto",
+        "title": "Manager (R&D) : Embedded Applications Engineer (ADAS)",
+        "company": "Bajaj Auto Technology Limited",
         "education": "IIT Madras (B.Tech Mechanical)",
         "email": "sachinsagar289@gmail.com",
         "linkedin": "https://www.linkedin.com/in/sachin-sagar-47155a1ab/",
@@ -73,28 +73,100 @@
     "experience": {
         "professional": [
             {
-                "role": "ADAS Algorithm Design and Testing",
-                "company": "Bajaj Auto Technology Ltd (R&D)",
-                "period": "06/2025 - Present",
-                "color": "royalblue",
-                "bulletPoints": [
-                    "Developed the company's first ADAS perception stack on the TI AWR1843 platform, and established standards for testing and validation.",
-                    "Architected real-time sensor fusion on the onboard DSP, synchronizing IMU data, and vehicle odometry from the vehicle CAN bus with radar point clouds for clustering (DBSCAN) and tracking (JPDA). Designed an Interacting Mixture Model (IMM).",
-                    "Optimized the perception and tracking algorithms to run on constrained hardware with zero heap allocation and in under 120kB of stack",
-                    "Developed a Hardware-In-Loop (HIL) setup to simulate road data from vehicle logs on the MCU, cutting down time spent on validation",
-                    "Implemented active safety features such as Active Emergency Braking and Adaptive Cruise Control using track collision probability."
-                ]
-            },
-            {
-                "role": "EV Control Strategy",
-                "company": "Bajaj Auto Technology Ltd (R&D)",
-                "period": "08/2023 - 05/2025",
-                "color": "royalblue",
-                "bulletPoints": [
-                    "Deployed a sensor-less mass and grade estimation algorithm for a shared mobility project using existing CAN bus data.",
-                    "Engineered a custom Coordinate Transformation library in MATLAB to normalize raw IMU readings from the sensor frame to the vehicle frame across multiple SKUs.",
-                    "Used the processed IMU data for firmware-level IMU applications (roll-over detection, blinker auto-cancellation, pitch-based regen/hill-hold) to the vehicle's production software.",
-                    "Resolved 20+ critical firmware defects in traction control and hill-assist logic through rigorous unit testing and system-level debugging."
+                "grouped": true,
+                "company": "Bajaj Auto Technology Limited",
+                "period": "08/2023 - Present",
+                "totalDuration": "3 yrs 2 mos",
+                "location": "Pune District, Maharashtra, India",
+                "workplaceType": "On-site",
+                "roles": [
+                    {
+                        "designation": "Manager (R&D)",
+                        "period": "06/2026 - Present",
+                        "tracks": [
+                            {
+                                "role": "Embedded applications engineer (ADAS)",
+                                "period": "06/2026 - Present",
+                                "location": "Pune District, Maharashtra, India",
+                                "milestone": "Delegate at MathWorks Automotive Conference 2026",
+                                "skills": [
+                                    "Radar-Camera-IMU Sensor Fusion",
+                                    "Perception Algorithms",
+                                    "Multi-Object Tracking",
+                                    "Testing & Validation Standards"
+                                ],
+                                "bulletPoints": [
+                                    "Lead systems development, testing, and validation of perception, tracking, and fusion algorithms using radar, camera, and IMU.",
+                                    "Established standardized validation procedures, HIL test suites, and performance metrics for next-gen ADAS platforms.",
+                                    "Architected active safety features including Autonomous Emergency Braking (AEB) and Adaptive Cruise Control (ACC) using collision probability models."
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "designation": "Assistant Manager (R&D)",
+                        "period": "05/2024 - 06/2026",
+                        "totalDuration": "2 yrs 2 mos",
+                        "tracks": [
+                            {
+                                "role": "Embedded applications engineer (ADAS)",
+                                "period": "05/2025 - 06/2026",
+                                "location": "Pune District, Maharashtra, India",
+                                "milestone": "Delegate at SIAT 2026",
+                                "skills": [
+                                    "Computer Vision",
+                                    "Advanced Driver-Assistance Systems (ADAS)",
+                                    "TI AWR1843",
+                                    "DSP Optimization"
+                                ],
+                                "bulletPoints": [
+                                    "Developed the company's first ADAS perception stack on the TI AWR1843 mmWave radar platform, establishing standards for testing and validation.",
+                                    "Architected real-time sensor fusion on the onboard DSP, synchronizing IMU data and vehicle odometry from the vehicle CAN bus with radar point clouds for clustering (DBSCAN) and tracking (JPDA with IMM).",
+                                    "Optimized perception and tracking algorithms to execute on constrained hardware with zero heap allocation and under 120kB of stack.",
+                                    "Developed a Hardware-In-Loop (HIL) setup to simulate road data from vehicle logs on the MCU, significantly accelerating validation cycles."
+                                ]
+                            },
+                            {
+                                "role": "Embedded applications engineer (Control Strategy)",
+                                "period": "05/2024 - 05/2025",
+                                "location": "Pune, India",
+                                "skills": [
+                                    "Python",
+                                    "IMU Integration & Calibration",
+                                    "Coordinate Transformation",
+                                    "Vehicle Firmware"
+                                ],
+                                "bulletPoints": [
+                                    "Developed digital infrastructure for IMU integration, orientation normalization, and systematic calibration across multiple vehicle models and SKUs.",
+                                    "Engineered a custom Coordinate Transformation library in MATLAB to normalize raw IMU readings from the sensor frame to the vehicle reference frame.",
+                                    "Deployed firmware-level IMU applications (roll-over detection, blinker auto-cancellation, pitch-based regenerative braking, and hill-hold assist) to production software."
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "designation": "Graduate Trainee Engineer - GTE (R&D)",
+                        "period": "08/2023 - 05/2024",
+                        "totalDuration": "10 mos",
+                        "tracks": [
+                            {
+                                "role": "Embedded applications engineer (Control Strategy)",
+                                "period": "08/2023 - 05/2024",
+                                "location": "Pune District, Maharashtra, India",
+                                "skills": [
+                                    "Control Systems Design",
+                                    "State Estimation",
+                                    "CAN Bus Telemetry",
+                                    "Fault Analytics & Fail-Safe"
+                                ],
+                                "bulletPoints": [
+                                    "Engineered and deployed a sensor-less mass and grade estimation algorithm for a shared mobility project using existing CAN bus telemetry.",
+                                    "Handled sensor integration, hardware debugging, telemetry fault analytics, and fail-safe strategy design.",
+                                    "Diagnosed and resolved 20+ critical firmware defects in traction control and hill-assist logic through rigorous unit testing and system-level debugging."
+                                ]
+                            }
+                        ]
+                    }
                 ]
             }
         ],

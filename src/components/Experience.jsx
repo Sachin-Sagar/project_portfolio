@@ -12,7 +12,11 @@ import morphing_wing from '../assets/pics/morphing_wing.png';
 const companyIcons = {
     'Engine Testing (Internship)': batl_icon,
     'Product Design Intern': reevia_icon,
-    'Simulation Engineer': forbes_icon
+    'Simulation Engineer': forbes_icon,
+    'Bajaj Auto Technology Limited': batl_icon,
+    'Bajaj Auto Technology Ltd (R&D)': batl_icon,
+    'Reevia Motor': reevia_icon,
+    'Forbes Marshall': forbes_icon
 };
 
 export const TimelineSection = ({ title, data }) => (
@@ -20,10 +24,10 @@ export const TimelineSection = ({ title, data }) => (
         <h3 className={title === 'College Experience' ? 'section-title' : 'timeline-category-title'}>{title}</h3>
         <div className="timeline-container">
             {data.map((item, index) => {
-                const icon = companyIcons[item.role];
+                const icon = companyIcons[item.company] || companyIcons[item.role];
 
                 if (item.grouped) {
-                    // Render a grouped experience (like Raftar)
+                    const groupedIcon = companyIcons[item.company];
                     return (
                         <FadeInSection key={index}>
                             <div className="timeline-grouped-block">
@@ -32,33 +36,133 @@ export const TimelineSection = ({ title, data }) => (
                                         <img src={rfr_car} alt="Raftar Formula Racing" />
                                     </div>
                                 )}
-                                <div style={{ display: 'flex', alignItems: 'baseline', gap: '1rem', marginBottom: '1.5em' }}>
-                                    <h4 className="timeline-category-title" style={{ marginBottom: 0 }}>{item.company}</h4>
-                                    <span className="grouped-period">{item.period}</span>
+
+                                <div className="grouped-header-container">
+                                    {groupedIcon && (
+                                        <img src={groupedIcon} alt={`${item.company} logo`} className="grouped-company-logo" />
+                                    )}
+                                    <div className="grouped-header-text">
+                                        <div className="grouped-header-row">
+                                            <h4 className="timeline-category-title" style={{ marginBottom: 0 }}>{item.company}</h4>
+                                            <span className="grouped-period">
+                                                {item.period} {item.totalDuration && `· ${item.totalDuration}`}
+                                            </span>
+                                        </div>
+                                        {(item.location || item.workplaceType) && (
+                                            <div className="grouped-meta">
+                                                {[item.location, item.workplaceType].filter(Boolean).join(' · ')}
+                                            </div>
+                                        )}
+                                    </div>
                                 </div>
 
                                 <div className="grouped-roles-container">
-                                    {item.roles.map((subRole, subIdx) => (
-                                        <div key={subIdx} className="timeline-block sub-role-block">
-                                            <div
-                                                className="timeline-marker"
-                                                style={{ borderColor: subRole.color || 'var(--accent-primary)' }}
-                                            ></div>
+                                    {item.roles.map((subRole, subIdx) => {
+                                        if (subRole.tracks && subRole.tracks.length > 0) {
+                                            return (
+                                                <div key={subIdx} className="timeline-block designation-group-block">
+                                                    <div
+                                                        className="timeline-marker designation-marker"
+                                                        style={{ borderColor: subRole.color || 'var(--accent-primary)' }}
+                                                    ></div>
 
-                                            <div className="timeline-content">
-                                                <div className="timeline-header">
-                                                    <h3 className="role">{subRole.role}</h3>
-                                                    <span className="period">{subRole.period}</span>
+                                                    <div className="timeline-content">
+                                                        <div className="designation-header">
+                                                            <div className="designation-title-row">
+                                                                <h3 className="designation-main-title">{subRole.designation}</h3>
+                                                                <span className="designation-period">
+                                                                    {subRole.period} {subRole.totalDuration && `· ${subRole.totalDuration}`}
+                                                                </span>
+                                                            </div>
+                                                        </div>
+
+                                                        <div className="designation-tracks-container">
+                                                            {subRole.tracks.map((track, tIdx) => (
+                                                                <div key={tIdx} className="track-item">
+                                                                    <div className="track-header">
+                                                                        <div className="track-title-group">
+                                                                            <h4 className="track-role-title">{track.role}</h4>
+                                                                            {track.location && (
+                                                                                <span className="role-location">{track.location}</span>
+                                                                            )}
+                                                                        </div>
+                                                                        <span className="period">{track.period}</span>
+                                                                    </div>
+                                                                    <ul className="bullet-points">
+                                                                        {track.bulletPoints.map((point, i) => (
+                                                                            <li key={i}>{point}</li>
+                                                                        ))}
+                                                                    </ul>
+                                                                    {track.milestone && (
+                                                                        <div className="role-milestone">
+                                                                            <span className="milestone-badge">🎯 {track.milestone}</span>
+                                                                        </div>
+                                                                    )}
+                                                                    {track.skills && track.skills.length > 0 && (
+                                                                        <div className="role-skills">
+                                                                            {track.skills.map((skill, sIdx) => (
+                                                                                <span key={sIdx} className="role-skill-pill">{skill}</span>
+                                                                            ))}
+                                                                        </div>
+                                                                    )}
+                                                                </div>
+                                                            ))}
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                {subRole.company && <h4 className="company">{subRole.company}</h4>}
-                                                <ul className="bullet-points">
-                                                    {subRole.bulletPoints.map((point, i) => (
-                                                        <li key={i}>{point}</li>
-                                                    ))}
-                                                </ul>
+                                            );
+                                        }
+
+                                        return (
+                                            <div key={subIdx} className="timeline-block sub-role-block">
+                                                <div
+                                                    className="timeline-marker"
+                                                    style={{ borderColor: subRole.color || 'var(--accent-primary)' }}
+                                                ></div>
+
+                                                <div className="timeline-content">
+                                                    <div className="timeline-header">
+                                                        <div className="role-header-text">
+                                                            <h3 className="role">
+                                                                {subRole.designation ? (
+                                                                    <>
+                                                                        <span className="designation-text">{subRole.designation}</span>
+                                                                        {subRole.role && (
+                                                                            <span className="designation-subtext"> : {subRole.role}</span>
+                                                                        )}
+                                                                    </>
+                                                                ) : (
+                                                                    subRole.role
+                                                                )}
+                                                            </h3>
+                                                            {subRole.location && (
+                                                                <span className="role-location">{subRole.location}</span>
+                                                            )}
+                                                        </div>
+                                                        <span className="period">{subRole.period}</span>
+                                                    </div>
+                                                    {subRole.company && <h4 className="company">{subRole.company}</h4>}
+                                                    <ul className="bullet-points">
+                                                        {subRole.bulletPoints.map((point, i) => (
+                                                            <li key={i}>{point}</li>
+                                                        ))}
+                                                    </ul>
+                                                    {subRole.milestone && (
+                                                        <div className="role-milestone">
+                                                            <span className="milestone-badge">🎯 {subRole.milestone}</span>
+                                                        </div>
+                                                    )}
+                                                    {subRole.skills && subRole.skills.length > 0 && (
+                                                        <div className="role-skills">
+                                                            {subRole.skills.map((skill, sIdx) => (
+                                                                <span key={sIdx} className="role-skill-pill">{skill}</span>
+                                                            ))}
+                                                        </div>
+                                                    )}
+                                                </div>
                                             </div>
-                                        </div>
-                                    ))}
+                                        );
+                                    })}
                                 </div>
                             </div>
                         </FadeInSection>
@@ -81,13 +185,29 @@ export const TimelineSection = ({ title, data }) => (
                             )}
 
                             <div className="timeline-content">
-                                {item.company === 'Bajaj Auto Technology Ltd (R&D)' && item.role.includes('ADAS') && (
+                                {item.company === 'Bajaj Auto Technology Ltd (R&D)' && item.role?.includes('ADAS') && (
                                     <div className="raftar-banner" style={{ marginBottom: '1rem', marginLeft: '-1.5rem', textAlign: 'left' }}>
                                         <img src={bajaj_banner} alt="Bajaj Auto Technology Ltd banner" style={{ maxWidth: '95%' }} />
                                     </div>
                                 )}
                                 <div className="timeline-header">
-                                    <h3 className="role">{item.role}</h3>
+                                    <div className="role-header-text">
+                                        <h3 className="role">
+                                            {item.designation ? (
+                                                <>
+                                                    <span className="designation-text">{item.designation}</span>
+                                                    {item.role && (
+                                                        <span className="designation-subtext"> : {item.role}</span>
+                                                    )}
+                                                </>
+                                            ) : (
+                                                item.role
+                                            )}
+                                        </h3>
+                                        {item.location && (
+                                            <span className="role-location">{item.location}</span>
+                                        )}
+                                    </div>
                                     <span className="period">{item.period}</span>
                                 </div>
                                 {item.role === 'Control of Camber Morphing Wing' && (
@@ -104,6 +224,18 @@ export const TimelineSection = ({ title, data }) => (
                                         <li key={i}>{point}</li>
                                     ))}
                                 </ul>
+                                {item.milestone && (
+                                    <div className="role-milestone">
+                                        <span className="milestone-badge">🎯 {item.milestone}</span>
+                                    </div>
+                                )}
+                                {item.skills && item.skills.length > 0 && (
+                                    <div className="role-skills">
+                                        {item.skills.map((skill, sIdx) => (
+                                            <span key={sIdx} className="role-skill-pill">{skill}</span>
+                                        ))}
+                                    </div>
+                                )}
                                 {item.role === 'Control of Camber Morphing Wing' && (
                                     <div style={{ display: 'flex', gap: '1rem', marginTop: '1.5rem', flexWrap: 'wrap' }}>
                                         <a href={`${import.meta.env.BASE_URL}docs/BTP_Poster.pdf`} target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>Poster</a>

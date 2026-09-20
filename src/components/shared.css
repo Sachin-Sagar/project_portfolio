@@ -124,10 +124,42 @@ ul.bullet-points li::before {
     background: transparent;
 }
 
-/* Grouped Role Styles (Raftar Formula Racing) */
+/* Grouped Role Styles */
 .timeline-grouped-block {
     position: relative;
-    margin-bottom: 2em;
+    margin-bottom: 2.5em;
+}
+
+.grouped-header-container {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    margin-bottom: 1.5em;
+}
+
+.grouped-company-logo {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    object-fit: contain;
+    background: #ffffff;
+    padding: 3px;
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    flex-shrink: 0;
+}
+
+.grouped-header-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.grouped-header-row {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    flex-wrap: wrap;
 }
 
 .grouped-company {
@@ -140,31 +172,150 @@ ul.bullet-points li::before {
 .grouped-period {
     font-size: 0.9em;
     color: var(--text-secondary);
+    font-weight: 400;
+}
+
+.grouped-meta {
+    font-size: 0.85em;
+    color: var(--text-secondary);
+    letter-spacing: 0.01em;
 }
 
 .grouped-roles-container {
     display: flex;
     flex-direction: column;
     gap: 2.5em;
-    margin-top: 2em;
+    margin-top: 1.5em;
+}
+
+/* Grouped Designation Sections (Manager, Assistant Manager, GTE) */
+.designation-group-block {
+    margin-bottom: 3em;
+}
+
+.designation-marker {
+    width: 14px;
+    height: 14px;
+    left: -2.4em;
+    background: var(--accent-primary);
+    border: 3px solid var(--bg-primary);
+    box-shadow: 0 0 0 2px var(--accent-primary);
+}
+
+.designation-header {
+    margin-bottom: 1.25em;
+}
+
+.designation-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    flex-wrap: wrap;
+    border-bottom: 1px solid var(--glass-border);
+    padding-bottom: 0.6rem;
+}
+
+.designation-main-title {
+    font-size: 1.35em;
+    font-weight: 700;
+    color: var(--accent-primary);
+    letter-spacing: 0.01em;
+}
+
+.designation-period {
+    font-size: 0.9em;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.designation-tracks-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2.25em;
+    padding-left: 0.75rem;
+    border-left: 1px dashed rgba(73, 191, 156, 0.35);
+    margin-left: 0.25rem;
+    margin-top: 0.75rem;
+}
+
+.track-item {
+    position: relative;
+    padding-left: 1.25rem;
+}
+
+.track-item::before {
+    content: '';
+    position: absolute;
+    left: -0.75rem;
+    top: 0.6em;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent-primary);
+    transform: translateX(-50%);
+}
+
+.track-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 0.4em;
+    flex-wrap: wrap;
+}
+
+.track-title-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.track-role-title {
+    font-size: 1.15em;
+    color: var(--text-primary);
+    font-weight: 600;
 }
 
 .sub-role-block .role {
-    font-size: 1.25em;
+    font-size: 1.2em;
 }
 
 .timeline-header {
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: baseline;
     gap: 1em;
-    margin-bottom: 0.25em;
+    margin-bottom: 0.4em;
+    flex-wrap: wrap;
+}
+
+.role-header-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
 }
 
 .role {
     font-size: 1.35em;
     color: var(--text-primary);
     font-weight: 600;
+    line-height: 1.35;
+}
+
+.designation-text {
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.designation-subtext {
+    font-weight: 400;
+    color: var(--accent-primary);
+}
+
+.role-location {
+    font-size: 0.82em;
+    color: var(--text-secondary);
 }
 
 .period {
@@ -173,6 +324,48 @@ ul.bullet-points li::before {
     background: transparent;
     padding: 0;
     border-radius: 0;
+    white-space: nowrap;
+}
+
+.role-milestone {
+    margin-top: 0.6em;
+    margin-bottom: 0.4em;
+}
+
+.milestone-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.85em;
+    font-weight: 500;
+    color: var(--accent-primary);
+    background: rgba(73, 191, 156, 0.1);
+    border: 1px solid rgba(73, 191, 156, 0.25);
+    padding: 0.25rem 0.75rem;
+    border-radius: 6px;
+}
+
+.role-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin-top: 0.85em;
+}
+
+.role-skill-pill {
+    font-size: 0.78em;
+    color: var(--text-secondary);
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    padding: 0.2rem 0.65rem;
+    border-radius: 12px;
+    letter-spacing: 0.02em;
+    transition: all 0.2s ease;
+}
+
+.role-skill-pill:hover {
+    border-color: var(--accent-primary);
+    color: var(--text-primary);
 }
 
 .company {
