@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import './Sidebar.css';
 import avatar from '../assets/pics/IITM_logo.png';
+import AtsExportModal from './AtsExportModal';
 
-const Sidebar = ({ basics, theme, toggleTheme }) => {
+const Sidebar = ({ basics, theme, toggleTheme, portfolioData }) => {
     const [isCollapsed, setIsCollapsed] = useState(true);
+    const [isExportModalOpen, setIsExportModalOpen] = useState(false);
 
     const handleLinkClick = () => {
         if (window.innerWidth <= 980) {
@@ -68,6 +70,13 @@ const Sidebar = ({ basics, theme, toggleTheme }) => {
                     <br /> ADAS and Embedded Applications.
                 </h1>
 
+                {basics.location && (
+                    <div className="sidebar-location" style={{ marginTop: '0.6em', fontSize: '0.88em', color: 'rgba(255, 255, 255, 0.65)', display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: '0.4em' }}>
+                        <span>📍</span>
+                        <span>{basics.location}</span>
+                    </div>
+                )}
+
                 <nav className="sidebar-nav">
                     <a href="#about" onClick={handleLinkClick}>About</a>
                     <a href="#experience" onClick={handleLinkClick}>Experiences</a>
@@ -77,7 +86,14 @@ const Sidebar = ({ basics, theme, toggleTheme }) => {
                 </nav>
 
                 <div className="sidebar-actions">
-                    <a href={`${import.meta.env.BASE_URL}docs/ssagar_resume.pdf`} target="_blank" rel="noreferrer" className="btn btn-primary" style={{ fontSize: '0.9em', height: '2.5em', lineHeight: '2.2em', padding: '0 1.5em' }}>Download Resume</a>
+                    <button
+                        type="button"
+                        onClick={() => setIsExportModalOpen(true)}
+                        className="btn btn-primary"
+                        style={{ fontSize: '0.9em', height: '2.5em', lineHeight: '2.2em', padding: '0 1.5em', cursor: 'pointer' }}
+                    >
+                        Download Resume
+                    </button>
                 </div>
 
                 <div className="social-links">
@@ -94,6 +110,11 @@ const Sidebar = ({ basics, theme, toggleTheme }) => {
                     <a href={`mailto:${basics.email}`} className="icon solid" aria-label="Email Me">
                         <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
                     </a>
+                    {basics.phone && (
+                        <a href={`tel:${basics.phone}`} className="icon solid" aria-label={`Call ${basics.phone}`} title={basics.phone}>
+                            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                        </a>
+                    )}
                 </div>
 
                 <div className="sidebar-footer-actions" style={{ marginTop: '1.5em', display: 'flex', justifyContent: 'flex-end' }}>
@@ -110,6 +131,12 @@ const Sidebar = ({ basics, theme, toggleTheme }) => {
                     </ul>
                 </div>
             </footer>
+
+            <AtsExportModal
+                isOpen={isExportModalOpen}
+                onClose={() => setIsExportModalOpen(false)}
+                data={portfolioData || { basics }}
+            />
         </header>
     );
 };

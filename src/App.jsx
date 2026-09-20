@@ -13,9 +13,9 @@ import ProjectDetail from './components/ProjectDetail';
 
 import prof_photo from './assets/pics/prof_photo.png';
 
-const Home = ({ basics, skills, experience, projects, education, courses, theme, toggleTheme }) => (
+const Home = ({ basics, skills, experience, projects, education, courses, theme, toggleTheme, portfolioData }) => (
   <div className="app-container">
-    <Sidebar basics={basics} theme={theme} toggleTheme={toggleTheme} />
+    <Sidebar basics={basics} theme={theme} toggleTheme={toggleTheme} portfolioData={portfolioData} />
 
     <main id="main">
       <FadeInSection>
@@ -23,6 +23,23 @@ const Home = ({ basics, skills, experience, projects, education, courses, theme,
         <h2 className="section-title">About me:</h2>
         <div className="about-content clearfix">
           <img src={prof_photo} alt="Profile" className="about-profile-photo" />
+          <div className="about-contact-bar" style={{ marginBottom: '1.2em', display: 'flex', flexWrap: 'wrap', gap: '1em', fontSize: '0.92em' }}>
+            {basics.location && (
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35em' }}>
+                📍 {basics.location}
+              </span>
+            )}
+            {basics.email && (
+              <a href={`mailto:${basics.email}`} style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35em' }}>
+                ✉️ {basics.email}
+              </a>
+            )}
+            {basics.phone && (
+              <a href={`tel:${basics.phone}`} style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35em' }}>
+                📞 {basics.phone}
+              </a>
+            )}
+          </div>
           {basics.summary.split('\n\n').map((paragraph, index) => (
             <p key={index} className="hero-summary" style={{ marginBottom: '1em' }}>
               {paragraph}
@@ -89,6 +106,7 @@ function App() {
             courses={courses} 
             theme={theme}
             toggleTheme={toggleTheme}
+            portfolioData={portfolioData}
           />
         } />
         <Route path="/project/:projectId" element={
