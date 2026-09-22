@@ -32,7 +32,7 @@ const projectAssets = {
 const Projects = ({ projectsData, theme }) => {
     return (
         <section id="projects" className="section projects-section">
-            <h2 className="section-title">Featured Projects</h2>
+            <h2 className="section-title">Personal Projects</h2>
             <div className="projects-grid">
                 {projectsData.map((project, index) => {
                     const assets = projectAssets[project.name];

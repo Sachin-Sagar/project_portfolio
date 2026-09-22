@@ -67,7 +67,7 @@ const Sidebar = ({ basics, theme, toggleTheme, portfolioData }) => {
                 <h1>
                     <strong>I am {basics.name}</strong>, an {basics.title}
                     <br /> from {basics.education} specializing in
-                    <br /> ADAS and Embedded Applications.
+                    <br /> ADAS and Control Applications.
                 </h1>
 
                 {basics.location && (
