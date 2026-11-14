@@ -3,10 +3,10 @@ import './shared.css';
 
 import polarKinematicsImg from '../assets/pics/imu_analytics/08_engine_vibration_kinematics_polar.png';
 import psdGroundImg from '../assets/pics/imu_analytics/01_ground_segment_imu_psd.png';
+import aafAliasingImg from '../assets/pics/imu_analytics/02_spectral_aliasing_mechanism.png';
 import butterworthBodeImg from '../assets/pics/imu_analytics/02_butterworth_bode_response.png';
 import filteredVsRawTimeImg from '../assets/pics/imu_analytics/04_filtered_vs_raw_time_domain.png';
 import filteredVsRawPsdImg from '../assets/pics/imu_analytics/05_filtered_vs_raw_psd_comparison.png';
-import fullSessionImg from '../assets/pics/imu_analytics/01_full_session_detections.png';
 
 const ImuEdgeAnalyticsDetails = ({ project }) => {
     return (
@@ -18,7 +18,7 @@ const ImuEdgeAnalyticsDetails = ({ project }) => {
                         This project develops an end-to-end signal processing, frequency-domain analysis, and digital filter design pipeline for high-frequency 6-axis Inertial Measurement Unit (IMU) telemetry on two-wheeled vehicles (motocross motorcycles).
                     </p>
                     <p style={{ marginBottom: '1.2em' }}>
-                        Rigidly mounting an IMU near the steering headstock exposes MEMS sensors to extreme mechanical vibration from a single-cylinder 2-stroke engine alongside harsh terrain impacts. By performing rigorous spectral characterization, 3D vibration polarization analysis, and digital filter synthesis, the pipeline isolates vehicle kinematics from powertrain noise&mdash;enabling robust downstream applications such as ballistic jump detection and landing shock analysis.
+                        Rigidly mounting an IMU near the steering headstock exposes MEMS sensors to extreme mechanical vibration from a single-cylinder 2-stroke engine alongside harsh terrain impacts. By performing rigorous spectral characterization, 3D vibration polarization analysis, and digital filter synthesis, the pipeline isolates vehicle kinematics from powertrain noise&mdash;proving the mandatory requirement of Anti-Aliasing Filtering (AAF) to prevent non-stationary accordion chirp folding during edge decimation.
                     </p>
                 </div>
             </section>
@@ -178,10 +178,73 @@ const ImuEdgeAnalyticsDetails = ({ project }) => {
                 </div>
             </section>
 
-            {/* Section 3: Digital Filter Design & Synthesis */}
+            {/* Section 3: Requirement of Anti-Aliasing Filtering (AAF) */}
+            <div style={{ borderLeft: '4px solid #f59e0b', paddingLeft: '1.5em', marginTop: '5em' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1em' }}>
+                    <h2 style={{ fontSize: '1.8em', margin: 0 }}>3. Requirement of Anti-Aliasing Filtering (AAF)</h2>
+                </div>
+                <p style={{ color: 'var(--text-secondary)', fontStyle: 'italic', marginTop: '0.5em' }}>
+                    Nyquist Folding Mechanics, DTFT Replica Superposition &amp; Non-Stationary Accordion Chirps
+                </p>
+            </div>
+
+            <section className="section" style={{ marginTop: '2em' }}>
+                <p style={{ lineHeight: '1.8' }}>
+                    Downsampling high-frequency telemetry (500 Hz) to lower rates (e.g., 100 Hz, 50 Hz, or 20 Hz) is required in edge architectures to reduce wireless BLE bandwidth, extend flash memory endurance, and conserve battery power. However, integer decimation by factor <i>M</i> (subsampling <code>x[::M]</code>) <b>does not anti-alias</b> on its own. In the Discrete-Time Fourier Transform (DTFT), decimation expands the frequency axis and superimposes <i>M &minus; 1</i> shifted spectral replicas directly into the new baseband:
+                </p>
+
+                <div className="math-equation" style={{ display: 'flex', justifyContent: 'center', gap: '3em', flexWrap: 'wrap', alignItems: 'center' }}>
+                    <div>X<sub>d</sub>(e<sup>jω</sup>) = (1 / M) · ∑<sub>k=0</sub><sup>M-1</sup> X(e<sup>j(ω - 2πk) / M</sup>)</div>
+                    <div style={{ fontSize: '1.5em', fontStyle: 'normal', opacity: '0.2' }}>|</div>
+                    <div>f<sub>alias</sub> = | f<sub>signal</sub> &minus; k · f<sub>s,new</sub> |</div>
+                </div>
+
+                <p style={{ lineHeight: '1.8', marginTop: '1.5em' }}>
+                    Under non-stationary motorcycle telemetry, omitting an Anti-Aliasing Filter before decimation induces catastrophic signal corruption due to three fundamental engineering mechanisms:
+                </p>
+
+                <ul className="bullet-points" style={{ marginTop: '1em', lineHeight: '1.8' }}>
+                    <li>
+                        <b>Continuous Accordion Chirp Folding:</b>
+                        Because rider throttle modulation sweeps engine RPM dynamically (50&ndash;130+ Hz), the piecewise triangular reflection map <i>f<sub>alias</sub>(t) = |f<sub>engine</sub>(t) &minus; k · f<sub>s,new</sub>|</i> causes folded harmonic energy to sweep back and forth continuously across the downsampled Nyquist interval. Spurious aliased energy traverses directly through vehicle motion sub-bands&mdash;corrupting near-DC gravity orientation (0&ndash;2 Hz), body heave (2&ndash;5 Hz), and suspension chatter (10&ndash;20 Hz).
+                    </li>
+                    <li>
+                        <b>Mathematical Irreversibility:</b>
+                        Once out-of-band high-frequency energy folds across the Nyquist boundary via naive decimation, it collapses into the identical discrete Fourier basis as true vehicle motion. Spectral information entropy is destroyed, making it mathematically impossible for any downstream digital filter, Kalman estimator, or machine learning model to disentangle aliased hash from authentic kinematics.
+                    </li>
+                    <li>
+                        <b>Failure of Blind Notch Filtering:</b>
+                        Fixed notch filters are rendered obsolete because dynamic unbalance frequencies continuously drift outside narrow notch bands. An Anti-Aliasing Low-Pass Filter (with cutoff set to Nyquist: <b>f<sub>c</sub> &le; 0.5 &middot; f<sub>s,new</sub></b>) acts as an unconditional spectral gate, guaranteeing zero out-of-band energy enters the downsampled baseband regardless of engine RPM trajectory.
+                    </li>
+                </ul>
+
+                {/* Figure 3: Spectral Aliasing Mechanism */}
+                <div className="glass-panel" style={{
+                    padding: '1.2em',
+                    borderRadius: '12px',
+                    border: '1px solid var(--glass-border)',
+                    background: 'var(--glass-bg)',
+                    boxShadow: '0 4px 20px rgba(0, 0, 0, 0.05)',
+                    margin: '2em 0 2.5em 0',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center'
+                }}>
+                    <img
+                        src={aafAliasingImg}
+                        alt="Spectral Aliasing Mechanism across Decimation Rates"
+                        style={{ width: '100%', height: 'auto', borderRadius: '6px', display: 'block' }}
+                    />
+                    <p style={{ fontSize: '0.88em', color: 'var(--text-secondary)', marginTop: '0.8em', textAlign: 'center', fontStyle: 'italic' }}>
+                        Figure 3: Power spectral density comparison demonstrating spectral aliasing across decimation rates (100 Hz, 50 Hz, 20 Hz). Naive decimation (orange) folds high-frequency engine harmonics across Nyquist boundaries, elevating the motion baseband noise floor by 15&ndash;25 dB; rate-matched Anti-Aliasing Filtering (green) completely eradicates aliased ingress.
+                    </p>
+                </div>
+            </section>
+
+            {/* Section 4: Digital Filter Design & Synthesis */}
             <div style={{ borderLeft: '4px solid #10b981', paddingLeft: '1.5em', marginTop: '5em' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1em' }}>
-                    <h2 style={{ fontSize: '1.8em', margin: 0 }}>3. Digital Filter Synthesis &amp; Validation</h2>
+                    <h2 style={{ fontSize: '1.8em', margin: 0 }}>4. Digital Filter Synthesis &amp; Validation</h2>
                 </div>
                 <p style={{ color: 'var(--text-secondary)', fontStyle: 'italic', marginTop: '0.5em' }}>
                     Butterworth SOS Synthesis, Zero-Phase Filtering, and Kinematics Preservation
@@ -190,7 +253,7 @@ const ImuEdgeAnalyticsDetails = ({ project }) => {
 
             <section className="section" style={{ marginTop: '2em' }}>
                 <p style={{ lineHeight: '1.8' }}>
-                    The filter specifications were formulated directly from the frequency separation between vehicle motion and powertrain unbalance:
+                    The filter specifications were formulated directly from the Anti-Aliasing requirement (f<sub>s,new</sub> = 50 Hz &rarr; f<sub>Nyq</sub> = 25 Hz) and the physical frequency separation between vehicle motion and powertrain unbalance:
                 </p>
 
                 <div className="math-equation" style={{ display: 'flex', justifyContent: 'center', gap: '3em', flexWrap: 'wrap', alignItems: 'center' }}>
@@ -215,7 +278,7 @@ const ImuEdgeAnalyticsDetails = ({ project }) => {
                     <li><b>Causal Real-Time Realization:</b> Implemented in Direct Form II Transposed (DF2T) Second-Order Sections (SOS) for embedded deployment with minimal real-time phase lag.</li>
                 </ul>
 
-                {/* Figure 3: Bode Response */}
+                {/* Figure 4: Bode Response */}
                 <div className="glass-panel" style={{
                     padding: '1.2em',
                     borderRadius: '12px',
@@ -233,11 +296,11 @@ const ImuEdgeAnalyticsDetails = ({ project }) => {
                         style={{ width: '100%', height: 'auto', borderRadius: '6px', display: 'block' }}
                     />
                     <p style={{ fontSize: '0.88em', color: 'var(--text-secondary)', marginTop: '0.8em', textAlign: 'center', fontStyle: 'italic' }}>
-                        Figure 3: Frequency response (magnitude &amp; phase) for the synthesized 4th-order Butterworth low-pass filter (f<sub>c</sub> = 25.0 Hz).
+                        Figure 4: Frequency response (magnitude &amp; phase) for the synthesized 4th-order Butterworth low-pass filter (f<sub>c</sub> = 25.0 Hz).
                     </p>
                 </div>
 
-                {/* Figure 4: Filtered vs Raw Time Domain */}
+                {/* Figure 5: Filtered vs Raw Time Domain */}
                 <div className="glass-panel" style={{
                     padding: '1.2em',
                     borderRadius: '12px',
@@ -255,11 +318,11 @@ const ImuEdgeAnalyticsDetails = ({ project }) => {
                         style={{ width: '100%', height: 'auto', borderRadius: '6px', display: 'block' }}
                     />
                     <p style={{ fontSize: '0.88em', color: 'var(--text-secondary)', marginTop: '0.8em', textAlign: 'center', fontStyle: 'italic' }}>
-                        Figure 4: Time-domain comparison showing raw acceleration containing heavy 58 Hz hash versus the smooth Butterworth-filtered trajectory preserving true motion dynamics.
+                        Figure 5: Time-domain comparison showing raw acceleration containing heavy engine hash versus the smooth Butterworth-filtered trajectory preserving true motion dynamics.
                     </p>
                 </div>
 
-                {/* Figure 5: Filtered vs Raw PSD Comparison */}
+                {/* Figure 6: Filtered vs Raw PSD Comparison */}
                 <div className="glass-panel" style={{
                     padding: '1.2em',
                     borderRadius: '12px',
@@ -277,60 +340,7 @@ const ImuEdgeAnalyticsDetails = ({ project }) => {
                         style={{ width: '100%', height: 'auto', borderRadius: '6px', display: 'block' }}
                     />
                     <p style={{ fontSize: '0.88em', color: 'var(--text-secondary)', marginTop: '0.8em', textAlign: 'center', fontStyle: 'italic' }}>
-                        Figure 5: Power spectral density comparison showing broadband stopband suppression of dynamic engine vibration sweeps (&gt;30 dB) while preserving authentic vehicle motion dynamics within the 0&ndash;20 Hz band.
-                    </p>
-                </div>
-            </section>
-
-            {/* Section 4: Sample Application - Kinematic Event Extraction */}
-            <div style={{ borderLeft: '4px solid #f59e0b', paddingLeft: '1.5em', marginTop: '5em' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1em' }}>
-                    <h2 style={{ fontSize: '1.8em', margin: 0 }}>4. Sample Application: Kinematic Event Extraction</h2>
-                </div>
-                <p style={{ color: 'var(--text-secondary)', fontStyle: 'italic', marginTop: '0.5em' }}>
-                    Validating the DSP Pipeline through Zero-g Ballistic Jump &amp; Impact Analysis
-                </p>
-            </div>
-
-            <section className="section" style={{ marginTop: '2em' }}>
-                <p style={{ lineHeight: '1.8' }}>
-                    To validate the practical utility of the signal breakdown and filtering framework, an end-to-end <b>kinematic event extraction engine</b> was deployed downstream of the filter stack. In motocross telemetry, identifying ballistic airborne flight intervals and impact shocks represents a rigorous test of edge kinematics estimation:
-                </p>
-
-                <div className="math-equation" style={{ display: 'flex', justifyContent: 'center', gap: '3em', flexWrap: 'wrap', alignItems: 'center' }}>
-                    <div>|| <strong>a</strong>(t) || = √(a<sub>x</sub>(t)² + a<sub>y</sub>(t)² + a<sub>z</sub>(t)²) ≤ 3.50 m/s²</div>
-                    <div style={{ fontSize: '1.5em', fontStyle: 'normal', opacity: '0.2' }}>|</div>
-                    <div>Δt ≥ 0.50 s (K ≥ 250 samples)</div>
-                </div>
-
-                <p style={{ lineHeight: '1.8', marginTop: '1.5em' }}>
-                    When external ground reaction forces vanish during takeoff, the net specific force vector collapses from the 9.81 m/s&sup2; baseline toward zero. By operating on the filtered kinematics, engine vibration zero-crossings are completely eliminated, enabling <b>100% precision and recall</b> across all 5 flight intervals (18.34s cumulative air time) with zero false triggers.
-                </p>
-
-                <ul className="bullet-points" style={{ marginTop: '1em', lineHeight: '1.8' }}>
-                    <li><b>Asymmetric Impact Shock Resolution:</b> Resolves landing impact spikes reaching <b>18.24 m/s&sup2;</b> (1.86g) occurring 16 ms post-touchdown, followed by exponential suspension damping (&tau; &approx; 18 ms).</li>
-                    <li><b>Attitude Kinematics Tracking:</b> Fuses gyroscope angular rates with normalized gravity vectors via a complementary filter to reconstruct sagittal pitch attitudes during takeoff, free-fall rotation, and touchdown.</li>
-                </ul>
-
-                {/* Figure 6: Full Session Event Extraction */}
-                <div className="glass-panel" style={{
-                    padding: '1.2em',
-                    borderRadius: '12px',
-                    border: '1px solid var(--glass-border)',
-                    background: 'var(--glass-bg)',
-                    boxShadow: '0 4px 20px rgba(0, 0, 0, 0.05)',
-                    margin: '2em 0 2em 0',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center'
-                }}>
-                    <img
-                        src={fullSessionImg}
-                        alt="Full Session Telemetry and Jump Kinematic Event Extraction"
-                        style={{ width: '100%', height: 'auto', borderRadius: '6px', display: 'block' }}
-                    />
-                    <p style={{ fontSize: '0.88em', color: 'var(--text-secondary)', marginTop: '0.8em', textAlign: 'center', fontStyle: 'italic' }}>
-                        Figure 6: Full-session event extraction resolving all 5 ballistic flight intervals and subsequent landing shock impulses using the conditioned IMU kinematics.
+                        Figure 6: Power spectral density comparison showing broadband stopband suppression of dynamic engine vibration sweeps (&gt;30 dB) while preserving authentic vehicle motion dynamics within the 0&ndash;20 Hz band.
                     </p>
                 </div>
             </section>
