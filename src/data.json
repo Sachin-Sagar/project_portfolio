@@ -261,7 +261,7 @@
             ],
             "blog": "This project develops an end-to-end signal processing, frequency-domain analysis, and digital filter design pipeline for high-frequency 6-axis Inertial Measurement Unit (IMU) telemetry on two-wheeled vehicles (motocross motorcycles).\n\nRigidly mounting an IMU near the steering headstock exposes MEMS sensors to extreme mechanical vibration from a single-cylinder 2-stroke engine alongside harsh terrain impacts. By performing rigorous spectral characterization, 3D vibration polarization analysis, and digital filter synthesis, the pipeline isolates vehicle kinematics from powertrain noise—enabling robust downstream applications such as ballistic jump detection and landing shock analysis.",
             "results": [
-                "Isolated single-cylinder 2-stroke unbalance harmonics at 58.11 Hz (3,487 RPM) and 116.21 Hz, proving 3D vibration polarization along the 56.7° cylinder tilt in the sagittal plane.",
+                "Isolated single-cylinder 2-stroke unbalance harmonics across dynamic RPM sweeps, proving 3D vibration polarization along the 56.7° cylinder tilt in the sagittal plane.",
                 "Demonstrated gyroscopic common-mode rejection (CMRR), verifying that Coriolis tuning forks remain immune to linear reciprocating vibration with a flat -65.3 dB/Hz noise floor.",
                 "Synthesized an optimal 4th-order Butterworth low-pass filter (fc = 25.0 Hz), achieving >30.5 dB fundamental rejection and >53.5 dB harmonic rejection with <0.73 dB passband ripple.",
                 "Validated kinematic event extraction as a sample application, accurately capturing zero-g ballistic flight intervals and resolving asymmetric 18.24 m/s² landing shock impulse dynamics."
