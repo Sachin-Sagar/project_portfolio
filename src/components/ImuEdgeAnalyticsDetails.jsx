@@ -1,7 +1,7 @@
 import React from 'react';
 import './shared.css';
 
-import polarKinematicsImg from '../assets/pics/imu_analytics/08_engine_vibration_kinematics_polar.png';
+import telemetryOverviewImg from '../assets/pics/imu_analytics/01_clean_session_telemetry.png';
 import psdGroundImg from '../assets/pics/imu_analytics/01_ground_segment_imu_psd.png';
 import aafAliasingImg from '../assets/pics/imu_analytics/02_spectral_aliasing_mechanism.png';
 import butterworthBodeImg from '../assets/pics/imu_analytics/02_butterworth_bode_response.png';
@@ -55,13 +55,13 @@ const ImuEdgeAnalyticsDetails = ({ project }) => {
                 </div>
             </div>
 
-            {/* Section 1: IMU Signal Breakdown & 3D Kinematics Polarization */}
+            {/* Section 1: IMU Signal Breakdown & Multi-Axis Telemetry */}
             <div style={{ borderLeft: '4px solid var(--accent-primary)', paddingLeft: '1.5em', marginTop: '4.5em' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1em' }}>
                     <h2 style={{ fontSize: '1.8em', margin: 0 }}>1. Multi-Axis IMU Signal Breakdown</h2>
                 </div>
                 <p style={{ color: 'var(--text-secondary)', fontStyle: 'italic', marginTop: '0.5em' }}>
-                    Physical Signal Regimes &amp; 3D Vibration Polarization
+                    Physical Signal Regimes, Full-Session Telemetry &amp; 3D Vibration Polarization
                 </p>
             </div>
 
@@ -89,6 +89,28 @@ const ImuEdgeAnalyticsDetails = ({ project }) => {
                     </li>
                 </ul>
 
+                {/* Figure 1: Clean Multi-Regime Telemetry Overview */}
+                <div className="glass-panel" style={{
+                    padding: '1.2em',
+                    borderRadius: '12px',
+                    border: '1px solid var(--glass-border)',
+                    background: 'var(--glass-bg)',
+                    boxShadow: '0 4px 20px rgba(0, 0, 0, 0.05)',
+                    margin: '2em 0 2.5em 0',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center'
+                }}>
+                    <img
+                        src={telemetryOverviewImg}
+                        alt="Triaxial Accelerometer and Gyroscope Telemetry Overview"
+                        style={{ width: '100%', height: 'auto', borderRadius: '6px', display: 'block' }}
+                    />
+                    <p style={{ fontSize: '0.88em', color: 'var(--text-secondary)', marginTop: '0.8em', textAlign: 'center', fontStyle: 'italic' }}>
+                        Figure 1: High-resolution 6-axis IMU telemetry recording (500 Hz) isolating clean kinematic regimes without dropouts or sensor drift. Resolves forward braking fork dive and throttle acceleration, the 1g gravity baseline, 0g free-fall collapse during ballistic jump flight, the sharp 18.1 m/s&sup2; (1.84g) landing shock impulse, and gyroscopic pitch maneuver dynamics against an immune Coriolis noise floor.
+                    </p>
+                </div>
+
                 <h3 style={{ fontSize: '1.3em', marginTop: '2.5em', marginBottom: '0.8em' }}>
                     3D Polarization &amp; Cylinder Stroke Inclination
                 </h3>
@@ -100,28 +122,6 @@ const ImuEdgeAnalyticsDetails = ({ project }) => {
                     <div>θ<sub>tilt</sub> = arctan(⟨a<sub>z</sub>⟩ / ⟨a<sub>x</sub>⟩) ≈ 56.7°</div>
                     <div style={{ fontSize: '1.5em', fontStyle: 'normal', opacity: '0.2' }}>|</div>
                     <div>a<sub>z</sub>(t) ≈ a<sub>x</sub>(t) · tan(56.7°)</div>
-                </div>
-
-                {/* Figure 1: 3D Vibration Polarization */}
-                <div className="glass-panel" style={{
-                    padding: '1.2em',
-                    borderRadius: '12px',
-                    border: '1px solid var(--glass-border)',
-                    background: 'var(--glass-bg)',
-                    boxShadow: '0 4px 20px rgba(0, 0, 0, 0.05)',
-                    margin: '2em 0 3em 0',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center'
-                }}>
-                    <img
-                        src={polarKinematicsImg}
-                        alt="3D Vibration Polarization and Cylinder Inclination Analysis"
-                        style={{ width: '100%', height: 'auto', borderRadius: '6px', display: 'block' }}
-                    />
-                    <p style={{ fontSize: '0.88em', color: 'var(--text-secondary)', marginTop: '0.8em', textAlign: 'center', fontStyle: 'italic' }}>
-                        Figure 1: 3D spatial polarization across sagittal (X&ndash;Z) and frontal (Y&ndash;Z) planes, confirming cylinder stroke inclination and directional vibration energy confinement.
-                    </p>
                 </div>
             </section>
 
