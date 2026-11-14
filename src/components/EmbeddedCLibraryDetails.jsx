@@ -4,14 +4,22 @@ import './shared.css';
 const EmbeddedCLibraryDetails = ({ project }) => {
     return (
         <div className="embedded-lib-details">
-            {project && project.blog && (
-                <section className="section" style={{ marginTop: '2em', paddingTop: '2em' }}>
-                    <h2 className="section-title">Overview</h2>
-                    <div className="project-blog" style={{ whiteSpace: 'pre-wrap', lineHeight: '1.8' }}>
-                        {project.blog}
-                    </div>
-                </section>
-            )}
+            <section className="section" style={{ marginTop: '2em', paddingTop: '2em' }}>
+                <h2 className="section-title">Overview</h2>
+                <div className="project-blog" style={{ lineHeight: '1.8' }}>
+                    <p style={{ marginBottom: '1.2em' }}>
+                        This project is a collection of high-performance, bare-metal C libraries designed for real-time embedded systems.
+                    </p>
+                    <ol style={{ paddingLeft: '1.5em', marginBottom: '1.5em' }}>
+                        <li style={{ marginBottom: '0.8em' }}>
+                            <strong>Real-time FFT:</strong> A highly optimized Radix-2 Fast Fourier Transform algorithm. By implementing bit-reversal sorting, pre-computed twiddle factor tables, and eliminating function call overhead, the library enables spectral analysis on low-power microcontrollers with sub-millisecond execution times.
+                        </li>
+                        <li style={{ marginBottom: '0.8em' }}>
+                            <strong>Quaternion Kinematics:</strong> A coordinate rotation library using unit quaternions. Quaternions provide a computationally efficient and robust alternative to Euler angles, completely avoiding &quot;Gimbal Lock&quot; and simplifying the composition of multiple rotations. The implementation uses a specialized vector rotation formula to minimize the number of multiplications per transformation.
+                        </li>
+                    </ol>
+                </div>
+            </section>
 
             {/* FFT Section */}
             <div style={{ borderLeft: '4px solid var(--accent-primary)', paddingLeft: '1.5em', marginTop: '4em' }}>

@@ -5,12 +5,16 @@ import FadeInSection from './FadeInSection';
 
 import mpcLoopImg from '../assets/pics/MPC_ctrlLoop.png';
 import roadAnomalyImg from '../assets/pics/road_anomaly_tile.png';
+import imuAnalyticsImg from '../assets/pics/imu_edge_analytics_tile.png';
 import embeddedLibsImg from '../assets/pics/embedded_libs_tile.png';
 import gpuClusteringImg from '../assets/pics/gpu_clustering_tile.png';
 import chaosTheoryImg from '../assets/pics/chaos_theory_tile.png';
 import posterDoc from '../assets/docs/ME19B159_Poster.pdf';
 
 const projectAssets = {
+    "Edge IMU Motion Analytics & Vibration DSP": {
+        image: imuAnalyticsImg
+    },
     "Control of Camber Morphing Wing": {
         image: mpcLoopImg,
         link: posterDoc
