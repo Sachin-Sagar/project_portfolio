@@ -256,7 +256,7 @@
             "context": "Signal Processing & Kinematics",
             "period": "Personal",
             "bulletPoints": [
-                "Deconstructed high-frequency (500 Hz) 6-axis IMU motorcycle telemetry, isolating 2-stroke engine unbalance harmonics (58.11 Hz and 116.21 Hz) via Welch PSD.",
+                "Deconstructed high-frequency (500 Hz) 6-axis IMU motorcycle telemetry, isolating dynamic 2-stroke reciprocating engine unbalance harmonics across throttle sweeps via Welch PSD.",
                 "Derived and synthesized a 4th-order Butterworth LP filter (fc = 25 Hz) in SOS architecture, delivering >30.5 dB powertrain vibration rejection while preserving 0–20 Hz vehicle motion dynamics."
             ],
             "blog": "This project develops an end-to-end signal processing, frequency-domain analysis, and digital filter design pipeline for high-frequency 6-axis Inertial Measurement Unit (IMU) telemetry on two-wheeled vehicles (motocross motorcycles).\n\nRigidly mounting an IMU near the steering headstock exposes MEMS sensors to extreme mechanical vibration from a single-cylinder 2-stroke engine alongside harsh terrain impacts. By performing rigorous spectral characterization, 3D vibration polarization analysis, and digital filter synthesis, the pipeline isolates vehicle kinematics from powertrain noise—enabling robust downstream applications such as ballistic jump detection and landing shock analysis.",

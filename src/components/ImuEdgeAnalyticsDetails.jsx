@@ -137,21 +137,21 @@ const ImuEdgeAnalyticsDetails = ({ project }) => {
 
             <section className="section" style={{ marginTop: '2em' }}>
                 <p style={{ lineHeight: '1.8' }}>
-                    To isolate engine dynamics from terrain chatter, Welch Power Spectral Density (PSD) estimation was performed over steady-state ground telemetry segments (Hanning windowing, 50% overlap). The resulting spectrum reveals sharp, discrete powertrain tones on the linear accelerometer channels:
+                    To isolate engine dynamics from terrain chatter, Welch Power Spectral Density (PSD) estimation was evaluated over ground telemetry segments (Hanning windowing, 50% overlap). The resulting spectrum clearly isolates dynamic accelerometer ingress from gyroscopic Coriolis immunity:
                 </p>
 
                 <ul className="bullet-points" style={{ marginTop: '1.2em', lineHeight: '1.8' }}>
                     <li>
-                        <b>Fundamental Harmonic Tone (f<sub>1</sub> = 58.11 Hz):</b>
-                        Observed during a steady-state cruise window (~3,487 RPM), generating discrete peaks of <b>&minus;20.90 dB/Hz</b> on vertical acceleration (a<sub>z</sub>) and <b>&minus;24.47 dB/Hz</b> on longitudinal acceleration (a<sub>x</sub>), while dynamic riding sweeps this fundamental across the operating frequency band.
+                        <b>Dynamic Ground Vibration Peak Detection:</b>
+                        Accelerometers detect dominant unbalance peaks on the sagittal axes (vertical a<sub>z</sub> and longitudinal a<sub>x</sub>) that sweep dynamically with rider throttle input across 50&ndash;130 Hz. During steady ground cruise, prominent harmonic peaks appear at <b>~60.1 Hz</b> (nominal ~3,604 RPM) and second harmonics (~124.5 Hz).
                     </li>
                     <li>
-                        <b>Second Harmonic (f<sub>2</sub> = 116.21 Hz):</b>
-                        Secondary reciprocating unbalance resulting from connecting-rod angularity, peaking at <b>&minus;26.29 dB/Hz</b> on a<sub>z</sub> and <b>&minus;29.94 dB/Hz</b> on a<sub>x</sub>.
+                        <b>Sagittal Ingress vs. Lateral Attenuation:</b>
+                        Vertical acceleration (a<sub>z</sub>) exhibits the highest vibration energy (&minus;40.5 dB/Hz cruise peak), followed by longitudinal coupling (a<sub>x</sub>), while lateral vibration (a<sub>y</sub>) is suppressed by &gt;10.7 dB due to 3D cylinder stroke alignment.
                     </li>
                     <li>
                         <b>Gyroscopic Immunity (Common-Mode Rejection):</b>
-                        Angular velocity channels (&omega;<sub>x</sub>, &omega;<sub>y</sub>, &omega;<sub>z</sub>) exhibit a flat thermal noise floor (&minus;65.3 dB/Hz) with <i>zero discrete engine peaks</i>. This empirically verifies that differential MEMS Coriolis tuning-fork architecture rejects common-mode linear translational vibration, leaving angular rate telemetry pristine.
+                        Angular velocity channels (&omega;<sub>x</sub>, &omega;<sub>y</sub>, &omega;<sub>z</sub>) exhibit a flat Gaussian white noise floor with <i>zero discrete engine harmonic peaks</i> across the entire spectrum. This empirically verifies that differential MEMS Coriolis tuning-fork architectures reject common-mode linear translational vibration, leaving rotational rate telemetry pristine.
                     </li>
                 </ul>
 
@@ -173,7 +173,7 @@ const ImuEdgeAnalyticsDetails = ({ project }) => {
                         style={{ width: '100%', height: 'auto', borderRadius: '6px', display: 'block' }}
                     />
                     <p style={{ fontSize: '0.88em', color: 'var(--text-secondary)', marginTop: '0.8em', textAlign: 'center', fontStyle: 'italic' }}>
-                        Figure 2: Ground-segment Welch PSD comparing linear accelerometer channels (sharp 58.11 Hz and 116.21 Hz engine spikes) against gyroscopes (flat thermal noise floor).
+                        Figure 2: Welch PSD analysis comparing accelerometer ingress on sagittal axes (a<sub>x</sub>, a<sub>z</sub>) against gyroscopes exhibiting a flat noise floor and total immunity to linear engine vibration.
                     </p>
                 </div>
             </section>
