@@ -7,10 +7,17 @@ const Sidebar = ({ basics, theme, toggleTheme, portfolioData }) => {
     const [isCollapsed, setIsCollapsed] = useState(true);
     const [isExportModalOpen, setIsExportModalOpen] = useState(false);
 
-    const handleLinkClick = () => {
+    const handleNavClick = (e, targetId) => {
+        e.preventDefault();
         if (window.innerWidth <= 980) {
             setIsCollapsed(true);
         }
+        setTimeout(() => {
+            const element = document.getElementById(targetId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }, window.innerWidth <= 980 ? 50 : 0);
     };
 
     useEffect(() => {
@@ -78,11 +85,11 @@ const Sidebar = ({ basics, theme, toggleTheme, portfolioData }) => {
                 )}
 
                 <nav className="sidebar-nav">
-                    <a href="#about" onClick={handleLinkClick}>About</a>
-                    <a href="#experience" onClick={handleLinkClick}>Experiences</a>
-                    <a href="#projects" onClick={handleLinkClick}>Projects</a>
-                    <a href="#skills" onClick={handleLinkClick}>Skills</a>
-                    <a href="#education" onClick={handleLinkClick}>Education</a>
+                    <a href="#about" onClick={(e) => handleNavClick(e, 'about')}>About</a>
+                    <a href="#experience" onClick={(e) => handleNavClick(e, 'experience')}>Experiences</a>
+                    <a href="#projects" onClick={(e) => handleNavClick(e, 'projects')}>Projects</a>
+                    <a href="#skills" onClick={(e) => handleNavClick(e, 'skills')}>Skills</a>
+                    <a href="#education" onClick={(e) => handleNavClick(e, 'education')}>Education</a>
                 </nav>
 
                 <div className="sidebar-actions">
