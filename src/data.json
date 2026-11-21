@@ -253,6 +253,7 @@
         {
             "id": "imu-edge-analytics",
             "name": "Edge IMU Motion Analytics & Vibration DSP",
+            "domain": "Edge Analytics",
             "context": "Signal Processing & Kinematics",
             "period": "Personal",
             "bulletPoints": [
@@ -271,6 +272,7 @@
         {
             "id": "road-anomaly",
             "name": "Road-Anomaly Detection & Geospatial Mapping",
+            "domain": "Edge Analytics",
             "context": "Edge AI Applications",
             "period": "Personal",
             "bulletPoints": [
@@ -288,6 +290,7 @@
         {
             "id": "embedded-c-libraries",
             "name": "Custom Embedded C Libraries",
+            "domain": "Embedded Libraries",
             "context": "Signal Processing & Kinematics",
             "period": "Personal",
             "bulletPoints": [
@@ -308,6 +311,7 @@
         {
             "id": "gpu-clustering",
             "name": "GPU Accelerated Clustering",
+            "domain": "High-Performance Computing",
             "context": "High-Performance Computing",
             "period": "Personal",
             "bulletPoints": [
@@ -326,6 +330,7 @@
         {
             "id": "chaos-theory",
             "name": "Chaos Theory: SIMD Optimization Lab",
+            "domain": "High-Performance Computing",
             "context": "High-Performance Computing",
             "period": "Personal",
             "bulletPoints": [
